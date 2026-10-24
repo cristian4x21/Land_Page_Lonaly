@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loany Detalles | Floristería Fina, Ramos de Gala y Diseños Exclusivos</title>
+  <meta name="description" content="Floristería artesanal Loany Detalles en Galerías Qori Wasi. Ramos naturales de selección, ramos buchones de gala, flores permanentes y obsequios de alta gama con envíos a domicilio.">
+  <link rel="icon" type="image/png" href="assets/branding/logo.png">
+  <link rel="apple-touch-icon" href="assets/branding/logo.png">
+
+  <!-- Open Graph / Meta para compartir en WhatsApp, Facebook, Telegram, etc. -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_PE">
+  <meta property="og:site_name" content="Loany Detalles">
+  <meta property="og:title" content="Loany Detalles | Floristería Fina, Ramos de Gala y Momentos Memorables">
+  <meta property="og:description" content="Arreglos florales de autor, ramos buchones de 25 rosas, flores permanentes y obsequios exclusivos. Envíos a domicilio y recojo en Galerías Qori Wasi Stand 218. Pedidos al WhatsApp +51 904 156 666.">
+  <meta property="og:image" content="assets/branding/banner-og.jpg">
+  <meta property="og:image:secure_url" content="assets/branding/banner-og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="670">
+  <meta property="og:image:alt" content="Loany Detalles - Flores, Regalos y Momentos">
+
+  <!-- Twitter / X Cards (Banner Grande para Enlaces) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Loany Detalles | Floristería Fina & Ramos de Gala">
+  <meta name="twitter:description" content="Arreglos florales de autor y detalles exclusivos. Pedidos directos al WhatsApp +51 904 156 666.">
+  <meta name="twitter:image" content="assets/branding/banner-og.jpg">
+  <meta name="twitter:image:alt" content="Loany Detalles">
+
+  <!-- Enlace directo de imagen para aplicaciones de mensajería -->
+  <link rel="image_src" href="assets/branding/banner-og.jpg">
+  
+  <!-- Iconografía Profesional Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       TOP ANNOUNCEMENT BAR
+       ========================================================================== -->
+  <aside class="announcement-bar">
+    <div class="container announcement-content">
+      <span class="announcement-pill">
+        <i class="fa-solid fa-truck-fast"></i>
+        Envíos Hoy
+      </span>
+      <span>Entregas el mismo día disponibles en la ciudad • Pedidos directos al WhatsApp: <a href="https://wa.me/51904156666" target="_blank" style="color: #ffffff; text-decoration: underline; font-weight: 700;">+51 904 156 666</a></span>
+    </div>
+    <button class="announcement-close" aria-label="Cerrar notificación">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </aside>
+
+  <!-- ==========================================================================
+       HEADER & NAVBAR
+       ========================================================================== -->
+  <header class="main-header">
+    <div class="container header-container">
+      <nav class="navbar">
+        <!-- Brand Link -->
+        <a href="#" class="brand-link">
+          <img src="assets/branding/logo.png" alt="Loany Detalles" class="brand-logo-img">
+          <div class="brand-info">
+            <span class="brand-title">Loany Detalles</span>
+            <span class="brand-tagline">Flores • Regalos • Momentos</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-links">
+          <li class="nav-item"><a href="#fechas-especiales" class="nav-special-link"><i class="fa-solid fa-fire"></i> Fechas Especiales</a></li>
+          <li class="nav-item"><a href="#catalogo" onclick="setFilter('naturales')">Flores Naturales</a></li>
+          <li class="nav-item"><a href="#colecciones">Colecciones</a></li>
+          <li class="nav-item"><a href="#catalogo" onclick="setFilter('eternos')">Flores Eternas</a></li>
+          <li class="nav-item"><a href="#ocasiones">Ocasiones</a></li>
+          <li class="nav-item"><a href="#proceso">Cómo Comprar</a></li>
+          <li class="nav-item"><a href="#tienda">Punto de Atención</a></li>
+        </ul>
+
+        <!-- Action Buttons -->
+        <div class="nav-actions">
+          <a href="#catalogo" class="btn-icon" title="Buscar arreglos" onclick="document.getElementById('catalog-search').focus()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </a>
+
+          <button class="btn-icon" title="Ver pedido" onclick="openCartDrawer()">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-counter cart-counter-value">0</span>
+          </button>
+
+          <a href="https://wa.me/51904156666" target="_blank" class="btn-nav-order" title="Contactar por WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>904 156 666</span>
+          </a>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <button class="btn-hamburger" id="btn-hamburger-menu" onclick="openMobileNav()" aria-label="Abrir menú de navegación">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         HERO SECTION (DISEÑO PROFESIONAL, ANIMADO Y DE ALTO IMPACTO)
+         ========================================================================== -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-banner">
+          <div class="hero-grid">
+            <!-- Left Info Column -->
+            <div class="hero-content">
+              <div class="hero-pretitle">
+                <span class="pulse-dot"></span>
+                <span>Floristería de Autor y Arreglos de Selección</span>
+              </div>
+              
+              <h1 class="hero-title">
+                <span class="hero-line-1">ARREGLOS QUE CAUTIVAN,</span>
+                <span class="highlight">MOMENTOS QUE PERDURAN.</span>
+                <span class="cursive-sub">detalles que enamoran</span>
+              </h1>
+
+              <div class="hero-details-row">
+                <span class="hero-pill-badge">
+                  <i class="fa-solid fa-truck-fast"></i>
+                  Envíos prioritarios el mismo día
+                </span>
+                <span class="hero-pill-badge">
+                  <i class="fa-solid fa-shield-heart"></i>
+                  Garantía de máxima frescura
+                </span>
+                <span class="hero-pill-badge">
+                  <i class="fa-solid fa-star" style="color: #D97706;"></i>
+                  5.0 de calificación de clientes
+                </span>
+              </div>
+
+              <p class="hero-description">
+                Diseñamos ramos naturales frescos con flores seleccionadas de temporada, majestuosos ramos buchones de gala y arte floral permanente. Confeccionados con amor y dedicación para hacer de cada instante un recuerdo imborrable.
+              </p>
+
+              <div class="hero-cta-group">
+                <a href="#catalogo" class="btn-primary">
+                  <span>Ver Catálogo Completo</span>
+                </a>
+                <a href="https://wa.me/51904156666?text=Hola%20Loany%20Detalles,%20deseo%20asesor%C3%ADa%20para%20un%20arreglo%20floral" target="_blank" class="btn-secondary">
+                  <i class="fa-brands fa-whatsapp"></i>
+                  <span>Asesoría por WhatsApp</span>
+                </a>
+              </div>
+
+              <!-- Selector interactivo de Arreglos Insignia -->
+              <div class="hero-flagship-selector">
+                <span class="flagship-label">Arreglos Insignia:</span>
+                <div class="flagship-pills">
+                  <button class="flagship-btn active" onclick="switchHeroBouquet('ramo-buchon-frase')">
+                    Ramo Buchón 25 Rosas
+                  </button>
+                  <button class="flagship-btn" onclick="switchHeroBouquet('ramo-gatito')">
+                    Ramo Felino de Autor
+                  </button>
+                  <button class="flagship-btn" onclick="switchHeroBouquet('ramo-amor-verdadero')">
+                    Amor Verdadero
+                  </button>
+                  <button class="flagship-btn" onclick="switchHeroBouquet('ramo-eterno-rapunzel')">
+                    Eterno Rapunzel
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Visual Column (Composición Floral Flotante y Elegante) -->
+            <div class="hero-visual-wrapper">
+              <div class="hero-image-backdrop"></div>
+              
+              <div class="hero-flower-showcase">
+                <img id="hero-display-img" class="hero-main-flower-img" src="assets/products/ramo-buchon-frase.png" alt="Ramo Insignia Loany Detalles">
+              </div>
+
+              <div class="hero-price-tag" id="hero-price-tag">
+                <span class="label" id="hero-price-title">Ramo Buchón 25 Rosas</span>
+                <div class="price" id="hero-price-amount">S/. 100</div>
+              </div>
+
+              <div class="hero-quality-badge">
+                <i class="fa-solid fa-award"></i>
+                <span>Calidad Premium Seleccionada</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         VALUE PROPOSITION BADGES (4 CARDS - FONT AWESOME 6)
+         ========================================================================== -->
+    <section class="features-bar">
+      <div class="container">
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon-box">
+              <i class="fa-solid fa-truck-fast"></i>
+            </div>
+            <div class="feature-content">
+              <h4>Entrega a Domicilio</h4>
+              <p>Envíos el mismo día. Cobertura gratuita en zonas céntricas.</p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">
+              <i class="fa-solid fa-seedling"></i>
+            </div>
+            <div class="feature-content">
+              <h4>Flores de Selección</h4>
+              <p>Rosas, girasoles y tulipanes de primera calidad y apertura óptima.</p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <div class="feature-content">
+              <h4>Diseño de Autor</h4>
+              <p>Composiciones naturales y creaciones permanentes tejidas a mano.</p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">
+              <i class="fa-solid fa-shield-heart"></i>
+            </div>
+            <div class="feature-content">
+              <h4>Garantía de Satisfacción</h4>
+              <p>Presentación impecable, lazo de satén y tarjeta dedicatoria incluida.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         COLECCIONES EXCLUSIVAS
+         ========================================================================== -->
+    <section class="collections-section" id="colecciones">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-badge">Catálogo Oficial</span>
+            <h2 class="section-title">Colecciones Exclusivas</h2>
+            <p class="section-subtitle">Diseños concebidos para conmemorar cada fecha significativa con distinción.</p>
+          </div>
+          <button class="btn-view-all" onclick="setFilter('todos')">
+            <span>Ver Todo el Catálogo</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="collections-grid">
+          <a href="#catalogo" class="collection-card" onclick="setFilter('naturales')">
+            <div class="collection-img-box">
+              <img src="assets/products/ramo-vale.png" alt="Floristería Natural">
+            </div>
+            <div class="collection-details">
+              <div>
+                <h4 class="collection-name">Floristería Natural</h4>
+                <span class="collection-price">Desde S/. 20</span>
+              </div>
+              <div class="collection-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+          </a>
+
+          <a href="#catalogo" class="collection-card" onclick="setFilter('buchones')">
+            <div class="collection-img-box">
+              <img src="assets/products/ramo-buchon.png" alt="Ramos Buchones">
+            </div>
+            <div class="collection-details">
+              <div>
+                <h4 class="collection-name">Ramos Buchones</h4>
+                <span class="collection-price">25 Rosas • S/. 100</span>
+              </div>
+              <div class="collection-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+          </a>
+
+          <a href="#catalogo" class="collection-card" onclick="setFilter('eternos')">
+            <div class="collection-img-box">
+              <img src="assets/products/ramo-eterno-rapunzel.png" alt="Flores Permanentes">
+            </div>
+            <div class="collection-details">
+              <div>
+                <h4 class="collection-name">Flores Permanentes</h4>
+                <span class="collection-price">Desde S/. 38</span>
+              </div>
+              <div class="collection-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+          </a>
+
+          <a href="#catalogo" class="collection-card" onclick="setFilter('adicionales')">
+            <div class="collection-img-box">
+              <img src="assets/products/adicional-peluches.png" alt="Obsequios Complementarios">
+            </div>
+            <div class="collection-details">
+              <div>
+                <h4 class="collection-name">Complementos</h4>
+                <span class="collection-price">Desde S/. 3</span>
+              </div>
+              <div class="collection-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         STORY / FLORISTERÍA DE AUTOR
+         ========================================================================== -->
+    <section class="story-banner-section">
+      <div class="container">
+        <div class="story-card-wrapper">
+          <div class="story-content-side">
+            <span class="section-badge">Artesanía & Dedicación</span>
+            <h2 class="story-title">Flores que transmiten sentimientos genuinos</h2>
+            <p class="story-text">
+              En <strong>Loany Detalles</strong> cada arreglo floral es concebido como una obra única. Cuidamos rigurosamente la frescura de los pétalos, la armonía cromática de los follajes y la delicadeza de la envoltura para que su homenaje o celebración sea verdaderamente memorable.
+            </p>
+            <div>
+              <a href="#proceso" class="btn-primary" style="background: var(--text-dark); padding: 12px 24px;">
+                <span>Conoce el Proceso de Compra</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="story-media-side">
+            <div class="story-workshop-grid">
+              <div class="story-workshop-item">
+                <img src="assets/products/ramo-gatito.png" alt="Diseño Felino">
+              </div>
+              <div class="story-workshop-item">
+                <img src="assets/products/ramo-snoopy.png" alt="Ramo Snoopy">
+              </div>
+              <div class="story-workshop-item">
+                <img src="assets/products/ramo-eterno-snoopy-girasol.png" alt="Eterno Snoopy">
+              </div>
+              <div class="story-workshop-item">
+                <img src="assets/products/ramo-amor-verdadero.png" alt="Amor Verdadero">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         COMPRAR POR OCASIÓN (FONT AWESOME 6)
+         ========================================================================== -->
+    <section class="occasions-section" id="ocasiones">
+      <div class="container">
+        <div class="section-header" style="justify-content: center; text-align: center;">
+          <div>
+            <span class="section-badge">Selección por Motivo</span>
+            <h2 class="section-title">Comprar por Ocasión</h2>
+            <p class="section-subtitle">Propuestas seleccionadas según el momento especial a celebrar.</p>
+          </div>
+        </div>
+
+        <div class="occasions-grid">
+          <div class="occasion-card" onclick="filterByOccasion('Cumpleaños')">
+            <div class="occasion-icon-bubble">
+              <i class="fa-solid fa-cake-candles"></i>
+            </div>
+            <span class="occasion-name">Cumpleaños</span>
+          </div>
+
+          <div class="occasion-card" onclick="filterByOccasion('Aniversario')">
+            <div class="occasion-icon-bubble">
+              <i class="fa-solid fa-champagne-glasses"></i>
+            </div>
+            <span class="occasion-name">Aniversario</span>
+          </div>
+
+          <div class="occasion-card" onclick="filterByOccasion('Amor Romántico')">
+            <div class="occasion-icon-bubble">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+            <span class="occasion-name">Amor</span>
+          </div>
+
+          <div class="occasion-card" onclick="filterByOccasion('Felicitaciones')">
+            <div class="occasion-icon-bubble">
+              <i class="fa-solid fa-award"></i>
+            </div>
+            <span class="occasion-name">Felicitaciones</span>
+          </div>
+
+          <div class="occasion-card" onclick="filterByOccasion('Agradecimiento')">
+            <div class="occasion-icon-bubble">
+              <i class="fa-solid fa-hand-holding-heart"></i>
+            </div>
+            <span class="occasion-name">Agradecimiento</span>
+          </div>
+
+          <div class="occasion-card" onclick="filterByOccasion('Detalle Sorpresa')">
+            <div class="occasion-icon-bubble">
+              <i class="fa-solid fa-gift"></i>
+            </div>
+            <span class="occasion-name">Sorpresas</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         PROMO BAR
+         ========================================================================== -->
+    <section class="promo-bar-section">
+      <div class="container">
+        <div class="promo-bar">
+          <div class="promo-info-wrap">
+            <div class="promo-icon-box">
+              <i class="fa-solid fa-gift"></i>
+            </div>
+            <div class="promo-text">
+              <h3>Proximamnete Promociones!!!</h3>
+              <p>Regístrese para recibir promociones exclusivas en fechas conmemorativas.</p>
+            </div>
+          </div>
+
+          <form class="promo-form" id="promo-form">
+            <input type="email" id="promo-email" class="promo-input" placeholder="Correo electrónico o WhatsApp..." required>
+            <button type="submit" class="btn-promo-submit">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ALERTA DE FECHAS ESPECIALES & RAMOS POPULARES
+         ========================================================================== -->
+    <section class="special-dates-alert-section" id="fechas-especiales">
+      <div class="container">
+        <div class="special-dates-banner">
+          <div class="special-dates-header">
+            <div class="special-dates-pill">
+              <span class="live-pulse"></span>
+              <i class="fa-solid fa-fire"></i>
+              <span>Alerta de Fechas Especiales & Alta Demanda</span>
+            </div>
+            <h3 class="special-dates-title">Ramos Más Populares Disponibles para Celebraciones Especiales</h3>
+            <p class="special-dates-subtitle">
+              Para aniversarios, cumpleaños y fechas festivas, nuestros arreglos más solicitados cuentan con cupos limitados de confección artesanal. Reserve con anticipación para asegurar su entrega en el día exacto.
+            </p>
+          </div>
+
+          <div class="special-dates-grid">
+            <!-- Ramo Floral Hello Kitty & Maquillaje (1.jpg) -->
+            <div class="popular-alert-card" onclick="openProductModal('tendencia-ramo-hello-kitty')">
+              <div class="popular-card-badge">
+                <i class="fa-solid fa-fire"></i> Tendencia Viral
+              </div>
+              <div class="popular-card-img-wrap">
+                <img src="assets/populares/1-opt.jpg" alt="Ramo Floral Hello Kitty & Maquillaje" loading="lazy">
+              </div>
+              <div class="popular-card-body">
+                <span class="popular-card-tag">Nuevo en Tendencia</span>
+                <h4 class="popular-card-name">Ramo Floral Hello Kitty & Maquillaje</h4>
+                <div class="popular-card-footer">
+                  <span class="popular-card-price" style="font-size: 0.88rem; color: var(--primary);"><i class="fa-brands fa-whatsapp"></i> A Consultar</span>
+                  <button type="button" class="btn-popular-action" onclick="event.stopPropagation(); orderDirectWhatsApp('tendencia-ramo-hello-kitty')">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>Pedir</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Box Sorpresa Hello Kitty Glamour & Rosas (2.jpg) -->
+            <div class="popular-alert-card" onclick="openProductModal('tendencia-box-hello-kitty-glam')">
+              <div class="popular-card-badge">
+                <i class="fa-solid fa-fire"></i> Más Pedido
+              </div>
+              <div class="popular-card-img-wrap">
+                <img src="assets/populares/2-opt.jpg" alt="Box Sorpresa Hello Kitty Glamour & Rosas" loading="lazy">
+              </div>
+              <div class="popular-card-body">
+                <span class="popular-card-tag">Box en Tendencia</span>
+                <h4 class="popular-card-name">Box Sorpresa Hello Kitty Glamour & Rosas</h4>
+                <div class="popular-card-footer">
+                  <span class="popular-card-price" style="font-size: 0.88rem; color: var(--primary);"><i class="fa-brands fa-whatsapp"></i> A Consultar</span>
+                  <button type="button" class="btn-popular-action" onclick="event.stopPropagation(); orderDirectWhatsApp('tendencia-box-hello-kitty-glam')">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>Pedir</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Box Sanrio My Melody con Luces LED (3.jpg) -->
+            <div class="popular-alert-card" onclick="openProductModal('tendencia-box-my-melody-beauty')">
+              <div class="popular-card-badge">
+                <i class="fa-solid fa-fire"></i> Edición Sanrio
+              </div>
+              <div class="popular-card-img-wrap">
+                <img src="assets/populares/3-opt.jpg" alt="Box Sanrio My Melody con Luces LED" loading="lazy">
+              </div>
+              <div class="popular-card-body">
+                <span class="popular-card-tag">Con Luces LED</span>
+                <h4 class="popular-card-name">Box Sanrio My Melody & Sweet Beauty</h4>
+                <div class="popular-card-footer">
+                  <span class="popular-card-price" style="font-size: 0.88rem; color: var(--primary);"><i class="fa-brands fa-whatsapp"></i> A Consultar</span>
+                  <button type="button" class="btn-popular-action" onclick="event.stopPropagation(); orderDirectWhatsApp('tendencia-box-my-melody-beauty')">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>Pedir</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Box Hello Kitty Belleza & Cuidado Facial (4.jpg) -->
+            <div class="popular-alert-card" onclick="openProductModal('tendencia-box-hello-kitty-skincare')">
+              <div class="popular-card-badge">
+                <i class="fa-solid fa-fire"></i> Skincare & Belleza
+              </div>
+              <div class="popular-card-img-wrap">
+                <img src="assets/populares/4-opt.jpg" alt="Box Hello Kitty Belleza & Cuidado Facial" loading="lazy">
+              </div>
+              <div class="popular-card-body">
+                <span class="popular-card-tag">Cuidado Facial</span>
+                <h4 class="popular-card-name">Box Hello Kitty Belleza & Skincare</h4>
+                <div class="popular-card-footer">
+                  <span class="popular-card-price" style="font-size: 0.88rem; color: var(--primary);"><i class="fa-brands fa-whatsapp"></i> A Consultar</span>
+                  <button type="button" class="btn-popular-action" onclick="event.stopPropagation(); orderDirectWhatsApp('tendencia-box-hello-kitty-skincare')">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>Pedir</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="special-dates-cta-bar">
+            <div class="cta-bar-info">
+              <i class="fa-solid fa-calendar-check"></i>
+              <span>¿Tiene una fecha conmemorativa agendada? Reserve con fecha y dedicatoria personalizada.</span>
+            </div>
+            <a href="https://wa.me/51904156666?text=Hola%20Loany%20Detalles,%20deseo%20reservar%20un%20ramo%20popular%20para%20una%20fecha%20especial" target="_blank" class="btn-secondary" style="border-color: #ffffff; color: #ffffff;">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span>Consultar Fecha por WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CATÁLOGO COMPLETO DE PRODUCTOS
+         ========================================================================== -->
+    <section class="catalog-section" id="catalogo">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-badge">Catálogo Oficial</span>
+            <h2 class="section-title">Nuestros Arreglos Florales</h2>
+            <p class="section-subtitle">Seleccione el detalle de su agrado para coordinar o solicitar directamente por WhatsApp.</p>
+          </div>
+        </div>
+
+        <div class="catalog-controls">
+          <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="todos">Todos los Arreglos</button>
+            <button class="filter-tab" data-filter="populares"><i class="fa-solid fa-fire"></i> Más Populares</button>
+            <button class="filter-tab" data-filter="naturales">Floristería Natural</button>
+            <button class="filter-tab" data-filter="buchones">Ramos Buchones</button>
+            <button class="filter-tab" data-filter="eternos">Flores Permanentes</button>
+            <button class="filter-tab" data-filter="adicionales">Chocolates & Adicionales</button>
+            <button class="filter-tab" data-filter="gratis">Envío Gratuito Incluido</button>
+          </div>
+
+          <div class="catalog-search-wrap">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="catalog-search" placeholder="Buscar por flor o variedad...">
+          </div>
+        </div>
+
+        <div class="products-grid" id="products-grid">
+          <!-- Renderizado dinámicamente por js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         PROCESO DE COMPRA (PÁGINA 2 DEL PDF - DISEÑO PROFESIONAL)
+         ========================================================================== -->
+    <section class="process-section" id="proceso">
+      <div class="container">
+        <div class="process-header">
+          <h2 class="cursive-lead">Proceso de compra</h2>
+          <span class="process-tag-pill">Paso a paso para su comodidad</span>
+        </div>
+
+        <div class="process-steps-grid">
+          <div class="process-step-card">
+            <div class="step-card-header">
+              <span class="step-number">1</span>
+              <h3 class="step-title">Elija su producto</h3>
+            </div>
+            <p class="step-description">
+              Seleccione el ramo natural, arreglo permanente de limpiapipas u obsequio complementario de nuestro catálogo.
+            </p>
+          </div>
+
+          <div class="process-step-card">
+            <div class="step-card-header">
+              <span class="step-number">2</span>
+              <h3 class="step-title">Confirme su pedido</h3>
+            </div>
+            <p class="step-description">
+              Escríbanos por WhatsApp para verificar la disponibilidad de flores frescas del día y coordinar la dedicatoria.
+            </p>
+          </div>
+
+          <div class="process-step-card">
+            <div class="step-card-header">
+              <span class="step-number">3</span>
+              <h3 class="step-title">Modalidad de entrega</h3>
+            </div>
+            <p class="step-description">
+              Defina el método de entrega de su arreglo:
+            </p>
+            <div class="step-modality-boxes">
+              <div class="modality-box">
+                <h5>
+                  <i class="fa-solid fa-truck-fast"></i>
+                  Delivery
+                </h5>
+                <p>A domicilio u oficina. Cobertura sin costo en zonas céntricas para ramos seleccionados.</p>
+              </div>
+              <div class="modality-box">
+                <h5>
+                  <i class="fa-solid fa-shop"></i>
+                  Recojo en tienda
+                </h5>
+                <p>Retiro personal en nuestro stand de atención.</p>
+              </div>
+            </div>
+            <div class="pickup-highlight">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Galerías Qori Wasi • Stand 218 – 2do piso</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-steps-grid row-2">
+          <div class="process-step-card">
+            <div class="step-card-header">
+              <span class="step-number">4</span>
+              <h3 class="step-title">Realice el pago</h3>
+            </div>
+            <p class="step-description">
+              Confirmado el pedido, le facilitaremos los canales autorizados para transferencias bancarias directas, Yape o Plin.
+            </p>
+          </div>
+
+          <div class="process-step-card">
+            <div class="step-card-header">
+              <span class="step-number">5</span>
+              <h3 class="step-title">Preparación y Entrega</h3>
+            </div>
+            <p class="step-description">
+              Confeccionamos su arreglo con flores frescas de primera línea y empaque de alta presentación para garantizar una experiencia impecable.
+            </p>
+          </div>
+        </div>
+
+        <div class="process-bottom-quote">
+          <p>Tu felicidad también nos importa</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         UBICACIÓN
+         ========================================================================== -->
+    <section class="location-section" id="tienda">
+      <div class="container">
+        <div class="location-card">
+          <div class="location-content">
+            <span class="section-badge">Atención Presencial</span>
+            <h3>Punto de Recojo y Consultas</h3>
+            <p>
+              Si prefiere retirar su pedido personalmente o apreciar en físico nuestras colecciones permanentes y complementos, le invitamos a visitarnos.
+            </p>
+
+            <div class="location-details-list">
+              <div class="location-detail-item">
+                <div class="location-detail-icon">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="location-detail-text">
+                  <h5>Galerías Qori Wasi</h5>
+                  <p>Stand 218 – Segundo Piso</p>
+                </div>
+              </div>
+
+              <div class="location-detail-item">
+                <div class="location-detail-icon">
+                  <i class="fa-solid fa-truck-fast"></i>
+                </div>
+                <div class="location-detail-text">
+                  <h5>Servicio de Envíos</h5>
+                  <p>Reparto puntual y seguro en toda la ciudad.</p>
+                </div>
+              </div>
+
+              <div class="location-detail-item">
+                <div class="location-detail-icon">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div class="location-detail-text">
+                  <h5>Canal Directo de WhatsApp</h5>
+                  <p>Atención continua al <strong>+51 904 156 666</strong> para cotizaciones especiales.</p>
+                </div>
+              </div>
+            </div>
+
+            <a href="https://wa.me/51904156666" target="_blank" class="btn-primary">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span>Contactar por WhatsApp (+51 904 156 666)</span>
+            </a>
+          </div>
+
+          <div class="location-mascot-box">
+            <img src="assets/branding/mascot.png" alt="Loany Detalles">
+            <h4>Arreglos preparados bajo pedido</h4>
+            <p>Flores frescas seleccionadas diariamente para asegurar la máxima vida floral.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         BANNER INSTITUCIONAL DE MARCA (PREVIEW EN LINK & PRESENTACIÓN)
+         ========================================================================== -->
+    <section class="brand-banner-section">
+      <div class="container">
+        <div class="brand-banner-card">
+          <img src="assets/branding/banner-og.jpg" alt="Loany Detalles - Flores, Regalos y Momentos" class="brand-banner-img" loading="lazy">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="brand-link" style="margin-bottom: 14px;">
+            <img src="assets/branding/logo.png" alt="Loany Detalles" class="brand-logo-img">
+            <div class="brand-info">
+              <span class="brand-title">Loany Detalles</span>
+              <span class="brand-tagline">Flores • Regalos • Momentos</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Floristería de autor dedicada a la creación de arreglos naturales selectos, rosas de gala y arte floral permanente para celebraciones memorables.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Colecciones</h4>
+          <ul class="footer-links">
+            <li><a href="#catalogo" onclick="setFilter('naturales')">Floristería Natural</a></li>
+            <li><a href="#catalogo" onclick="setFilter('buchones')">Ramos Buchones (25 Rosas)</a></li>
+            <li><a href="#catalogo" onclick="setFilter('eternos')">Flores Permanentes</a></li>
+            <li><a href="#catalogo" onclick="setFilter('adicionales')">Chocolatería y Detalles</a></li>
+            <li><a href="#catalogo" onclick="setFilter('gratis')">Arreglos con Envío Incluido</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Servicio al Cliente</h4>
+          <ul class="footer-links">
+            <li><a href="#proceso">Guía del Proceso de Compra</a></li>
+            <li><a href="#tienda">Punto de Recojo en Tienda</a></li>
+            <li><a href="#ocasiones">Catálogo por Ocasión</a></li>
+            <li><a href="https://wa.me/51904156666" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp: 904 156 666</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Medios de Pago</h4>
+          <p style="font-size: 0.82rem; color: #a8939c; margin-bottom: 10px;">Transferencias directas y pagos electrónicos:</p>
+          <div class="payment-badges">
+            <span class="payment-pill">Yape</span>
+            <span class="payment-pill">Plin</span>
+            <span class="payment-pill">BCP</span>
+            <span class="payment-pill">BBVA</span>
+            <span class="payment-pill">Tarjetas</span>
+          </div>
+          <div style="margin-top: 18px;">
+            <p style="font-size: 0.8rem; color: #a8939c;">Ubicación:</p>
+            <strong style="color: #ffffff; font-size: 0.84rem;">Galerías Qori Wasi - Stand 218 (2do Piso)</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 Loany Detalles. Todos los derechos reservados.
+        </div>
+        <div class="social-links">
+          <a href="https://wa.me/51904156666" target="_blank" class="social-btn" title="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+          <a href="#" class="social-btn" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="#" class="social-btn" title="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-btn" title="TikTok">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MOBILE NAVIGATION DRAWER (EXPERIENCIA MÓVIL & TABLET)
+       ========================================================================== -->
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay" onclick="closeMobileNav()">
+    <div class="mobile-nav-drawer" onclick="event.stopPropagation()">
+      <div class="mobile-nav-header">
+        <a href="#" class="brand-link" onclick="closeMobileNav()">
+          <img src="assets/branding/logo.png" alt="Loany Detalles" class="brand-logo-img">
+          <div class="brand-info">
+            <span class="brand-title">Loany Detalles</span>
+            <span class="brand-tagline">Flores • Regalos • Momentos</span>
+          </div>
+        </a>
+        <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Cerrar menú">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="mobile-nav-body">
+        <div class="mobile-nav-badge">
+          <i class="fa-solid fa-shop"></i>
+          <span>Galerías Qori Wasi • Stand 218</span>
+        </div>
+
+        <ul class="mobile-nav-list">
+          <li>
+            <a href="#fechas-especiales" class="mobile-link-highlight" onclick="closeMobileNav()">
+              <div class="mobile-link-icon fire"><i class="fa-solid fa-fire"></i></div>
+              <div class="mobile-link-text">
+                <strong>Fechas Especiales & Tendencias</strong>
+                <span>Ediciones virales y alta demanda</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#catalogo" onclick="setFilter('todos'); closeMobileNav();">
+              <div class="mobile-link-icon"><i class="fa-solid fa-seedling"></i></div>
+              <div class="mobile-link-text">
+                <strong>Catálogo Completo</strong>
+                <span>Todos los arreglos florales</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#catalogo" onclick="setFilter('naturales'); closeMobileNav();">
+              <div class="mobile-link-icon"><i class="fa-solid fa-fan"></i></div>
+              <div class="mobile-link-text">
+                <strong>Floristería Natural</strong>
+                <span>Rosas y follajes frescos selectos</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#catalogo" onclick="setFilter('buchones'); closeMobileNav();">
+              <div class="mobile-link-icon"><i class="fa-solid fa-crown"></i></div>
+              <div class="mobile-link-text">
+                <strong>Ramos Buchones</strong>
+                <span>25 Rosas de gala y frases</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#catalogo" onclick="setFilter('eternos'); closeMobileNav();">
+              <div class="mobile-link-icon"><i class="fa-solid fa-heart"></i></div>
+              <div class="mobile-link-text">
+                <strong>Flores Permanentes</strong>
+                <span>Ramos tejidos y flores eternas</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#colecciones" onclick="closeMobileNav()">
+              <div class="mobile-link-icon"><i class="fa-solid fa-layer-group"></i></div>
+              <div class="mobile-link-text">
+                <strong>Colecciones Exclusivas</strong>
+                <span>Líneas y variedades temáticas</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#ocasiones" onclick="closeMobileNav()">
+              <div class="mobile-link-icon"><i class="fa-solid fa-gift"></i></div>
+              <div class="mobile-link-text">
+                <strong>Comprar por Ocasión</strong>
+                <span>Cumpleaños, aniversarios y amor</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#proceso" onclick="closeMobileNav()">
+              <div class="mobile-link-icon"><i class="fa-solid fa-circle-check"></i></div>
+              <div class="mobile-link-text">
+                <strong>Cómo Comprar</strong>
+                <span>Proceso formal y métodos de pago</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#tienda" onclick="closeMobileNav()">
+              <div class="mobile-link-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="mobile-link-text">
+                <strong>Punto de Atención</strong>
+                <span>Galerías Qori Wasi • 2do piso</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="mobile-nav-footer">
+        <a href="https://wa.me/51904156666" target="_blank" class="mobile-nav-wa-btn">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>Pedir por WhatsApp (904 156 666)</span>
+        </a>
+        <div class="mobile-nav-socials">
+          <a href="https://wa.me/51904156666" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.tiktok.com/@loanydetalles" target="_blank" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       CART DRAWER OVERLAY
+       ========================================================================== -->
+  <div class="cart-drawer-overlay" id="cart-drawer-overlay" onclick="closeCartDrawer()">
+    <div class="cart-drawer" onclick="event.stopPropagation()">
+      <div class="cart-drawer-header">
+        <h3>Resumen del Pedido</h3>
+        <button class="btn-close-cart" onclick="closeCartDrawer()" aria-label="Cerrar pedido">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="cart-drawer-items" id="cart-drawer-items">
+        <!-- Renderizado por js/app.js -->
+      </div>
+
+      <div class="cart-drawer-footer">
+        <!-- Selector de Modalidad -->
+        <div class="cart-mode-selector">
+          <button type="button" class="mode-tab-btn active" id="btn-mode-delivery" onclick="setOrderMode('delivery')">
+            <i class="fa-solid fa-truck-fast"></i>
+            <span>Envío por Delivery</span>
+          </button>
+          <button type="button" class="mode-tab-btn" id="btn-mode-recojo" onclick="setOrderMode('recojo')">
+            <i class="fa-solid fa-shop"></i>
+            <span>Recojo en Tienda</span>
+          </button>
+        </div>
+
+        <!-- Formulario: Si elige Delivery -->
+        <div id="cart-delivery-fields" class="cart-form-section">
+          <div class="cart-form-title">
+            <i class="fa-solid fa-truck-fast"></i>
+            <span>Datos de Entrega a Domicilio</span>
+          </div>
+
+          <div class="cart-input-group">
+            <label for="delivery-name">Nombre de quien recibe:</label>
+            <input type="text" id="delivery-name" class="cart-input" placeholder="Nombre y apellido completos">
+          </div>
+
+          <div class="cart-input-row">
+            <div class="cart-input-group">
+              <label for="delivery-phone">Teléfono / Celular:</label>
+              <input type="tel" id="delivery-phone" class="cart-input" placeholder="Ej. 904 156 666">
+            </div>
+            <div class="cart-input-group">
+              <label for="delivery-date">Fecha de entrega:</label>
+              <input type="date" id="delivery-date" class="cart-input">
+            </div>
+          </div>
+          <div class="cart-special-date-notice">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>Para fechas especiales y aniversarios, recomendamos reservar con anticipación para asegurar su cupo de entrega.</span>
+          </div>
+
+          <div class="cart-input-group" style="margin-top: 12px;">
+            <label for="delivery-address">Dirección exacta de entrega:</label>
+            <input type="text" id="delivery-address" class="cart-input" placeholder="Av. / Jr. / Calle, número y distrito">
+          </div>
+
+          <div class="cart-input-row">
+            <div class="cart-input-group">
+              <label for="delivery-ref">Referencia:</label>
+              <input type="text" id="delivery-ref" class="cart-input" placeholder="Color de fachada, frente a...">
+            </div>
+            <div class="cart-input-group">
+              <label for="delivery-time">Rango de horario:</label>
+              <select id="delivery-time" class="cart-input">
+                <option value="Mañana (9:00 am - 1:00 pm)">Mañana (9:00 am - 1:00 pm)</option>
+                <option value="Tarde (2:00 pm - 6:30 pm)">Tarde (2:00 pm - 6:30 pm)</option>
+                <option value="Inmediato / Coordinar">Inmediato / Coordinar</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulario: Si elige Recojo en Tienda -->
+        <div id="cart-pickup-fields" class="cart-form-section" style="display: none;">
+          <div class="cart-form-title">
+            <i class="fa-solid fa-shop"></i>
+            <span>Datos para Recojo en Tienda</span>
+          </div>
+
+          <div class="pickup-store-badge">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <strong>Galerías Qori Wasi • Stand 218</strong>
+              <div style="font-size: 0.72rem; color: var(--text-muted);">Segundo piso • Atención de lunes a sábado</div>
+            </div>
+          </div>
+
+          <div class="cart-input-group">
+            <label for="pickup-name">Nombre de quien recoge:</label>
+            <input type="text" id="pickup-name" class="cart-input" placeholder="Persona que retirará el arreglo">
+          </div>
+
+          <div class="cart-input-row">
+            <div class="cart-input-group">
+              <label for="pickup-phone">Teléfono / Celular:</label>
+              <input type="tel" id="pickup-phone" class="cart-input" placeholder="Ej. 904 156 666">
+            </div>
+            <div class="cart-input-group">
+              <label for="pickup-date">Fecha de recojo:</label>
+              <input type="date" id="pickup-date" class="cart-input">
+            </div>
+          </div>
+          <div class="cart-special-date-notice">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>Horario de atención en tienda: 10:00 am a 7:30 pm en Galerías Qori Wasi (Stand 218).</span>
+          </div>
+
+          <div class="cart-input-group">
+            <label for="pickup-time">Horario estimado:</label>
+            <select id="pickup-time" class="cart-input">
+              <option value="Mañana (10:00 am - 1:00 pm)">Mañana (10:00 am - 1:00 pm)</option>
+              <option value="Tarde (2:30 pm - 7:30 pm)">Tarde (2:30 pm - 7:30 pm)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Dedicatoria -->
+        <div class="cart-dedication-box">
+          <label for="cart-dedication">Dedicatoria para la tarjeta (Sin costo):</label>
+          <textarea id="cart-dedication" class="cart-input" placeholder="De: ... Para: ... Mensaje: ..."></textarea>
+        </div>
+
+        <div class="cart-total-row">
+          <span class="cart-total-label">Total estimado:</span>
+          <span class="cart-total-amount" id="cart-total">S/. 0.00</span>
+        </div>
+
+        <button class="btn-checkout-wa" id="btn-checkout-wa">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>Realizar Pedido por WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       PRODUCT DETAIL MODAL
+       ========================================================================== -->
+  <div class="modal-overlay" id="product-modal-overlay" onclick="closeProductModal()">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeProductModal()" aria-label="Cerrar ventana">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="modal-img-col">
+        <img id="modal-img" src="" alt="Detalle del Arreglo">
+      </div>
+      <div class="modal-body-col">
+        <span id="modal-category" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--primary); letter-spacing: 1.2px;"></span>
+        <h2 id="modal-title" class="modal-title"></h2>
+        <div id="modal-price" class="modal-price"></div>
+        <p id="modal-desc" class="modal-desc"></p>
+        
+        <strong style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-dark); margin-bottom: 8px; letter-spacing: 0.5px;">Composición del Arreglo:</strong>
+        <ul id="modal-features" class="modal-features-list"></ul>
+
+        <div class="modal-actions">
+          <button id="modal-btn-add" class="btn-primary" style="flex: 1; justify-content: center;">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span>Añadir al Carrito</span>
+          </button>
+          <button id="modal-btn-wa" class="btn-secondary" style="flex: 1; justify-content: center;">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>Pedir Directo</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       FLOATING WHATSAPP BUTTON (ESTILO PROFESIONAL)
+       ========================================================================== -->
+  <a href="https://wa.me/51904156666" target="_blank" class="floating-whatsapp" title="Contactar por WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span>WhatsApp 904 156 666</span>
+  </a>
+
+  <!-- ==========================================================================
+       FLOATING LIVE DEMAND ALERT (PRODUCTO POPULAR / FECHAS ESPECIALES)
+       ========================================================================== -->
+  <aside class="live-popular-alert" id="live-popular-alert" role="complementary" aria-live="polite">
+    <button class="btn-close-demand" onclick="dismissLiveDemandAlert()" aria-label="Cerrar alerta">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="demand-content">
+      <div class="demand-thumb-box">
+        <img id="demand-img" src="assets/products/ramo-buchon-frase.png" alt="Arreglo Popular">
+      </div>
+      <div class="demand-info">
+        <div class="demand-top-line">
+          <span class="demand-badge"><i class="fa-solid fa-fire"></i> Producto Popular</span>
+          <span class="demand-time">Alta demanda</span>
+        </div>
+        <h5 id="demand-title" class="demand-title">Ramo Buchón 25 Rosas</h5>
+        <p id="demand-text" class="demand-text">Alta demanda para fechas especiales y celebraciones.</p>
+        <div class="demand-actions">
+          <button id="demand-view-btn" class="demand-link" onclick="openProductModal('ramo-buchon-frase')">
+            <span>Ver Arreglo</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       TOAST NOTICE
+       ========================================================================== -->
+  <div class="toast-notice" id="toast-notice">
+    <span id="toast-message">Notificación</span>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
