@@ -17,11 +17,23 @@ const staticDir = fs.existsSync(path.join(__dirname, 'dist', 'index.html'))
 // Servir archivos estáticos (sin servir automáticamente index.html en '/' para permitir inyección dinámica de OpenGraph)
 app.use(express.static(staticDir, { index: false }));
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use('/img', express.static(path.join(__dirname, 'public', 'img')));
+app.use('/img', express.static(path.join(__dirname, 'img')));
 app.use(express.static(path.join(__dirname, 'public'), { index: false }));
 
 // Rutas dedicadas para el banner de vista previa al compartir en WhatsApp / Redes Sociales
-app.get(['/banner.jpg', '/banner-og.jpg', '/assets/branding/banner-og.jpg'], (req, res) => {
+app.get([
+  '/img/og-preview.jpg',
+  '/og-preview.jpg',
+  '/banner.jpg',
+  '/banner-og.jpg',
+  '/assets/branding/banner-og.jpg',
+  '/assets/branding/og-preview.jpg'
+], (req, res) => {
   const possiblePaths = [
+    path.join(__dirname, 'public', 'img', 'og-preview.jpg'),
+    path.join(__dirname, 'img', 'og-preview.jpg'),
+    path.join(__dirname, 'dist', 'img', 'og-preview.jpg'),
     path.join(__dirname, 'dist', 'assets', 'branding', 'banner-og.jpg'),
     path.join(__dirname, 'public', 'assets', 'branding', 'banner-og.jpg'),
     path.join(__dirname, 'public', 'banner-og.jpg'),
@@ -39,7 +51,7 @@ app.get(['/banner.jpg', '/banner-og.jpg', '/assets/branding/banner-og.jpg'], (re
   res.status(404).send('Banner no encontrado');
 });
 
-// Manejo dinámico de index.html con inyección de URL absoluta para OpenGraph / WhatsApp preview
+// Manejo dinámico de index.html con soporte canónico para OpenGraph / WhatsApp preview
 app.get('*', (req, res) => {
   const indexPath = path.join(staticDir, 'index.html');
   if (!fs.existsSync(indexPath)) {
@@ -51,26 +63,18 @@ app.get('*', (req, res) => {
       return res.status(500).send('Error interno del servidor');
     }
 
-    const protocol = req.headers['x-forwarded-proto'] || req.protocol || 'http';
-    const host = req.headers['x-forwarded-host'] || req.get('host') || `localhost:${PORT}`;
-    const baseUrl = `${protocol}://${host}`;
-    const pageUrl = `${baseUrl}${req.originalUrl || '/'}`;
+    const host = req.headers['x-forwarded-host'] || req.get('host') || '';
+    let dynamicHtml = html;
 
-    // Inyectar URL absoluta en las etiquetas Open Graph y Twitter Cards para asegurar preview en WhatsApp
-    let dynamicHtml = html
-      .replace(/(<meta\s+property="og:image(?::secure_url)?"\s+content=")([^"]+)(")/gi, (m, p1, p2, p3) => {
-        const fullUrl = p2.startsWith('http') ? p2 : `${baseUrl}${p2.startsWith('/') ? '' : '/'}${p2}`;
-        return `${p1}${fullUrl}${p3}`;
-      })
-      .replace(/(<meta\s+name="twitter:image"\s+content=")([^"]+)(")/gi, (m, p1, p2, p3) => {
-        const fullUrl = p2.startsWith('http') ? p2 : `${baseUrl}${p2.startsWith('/') ? '' : '/'}${p2}`;
-        return `${p1}${fullUrl}${p3}`;
-      })
-      .replace(/(<link\s+rel="image_src"\s+href=")([^"]+)(")/gi, (m, p1, p2, p3) => {
-        const fullUrl = p2.startsWith('http') ? p2 : `${baseUrl}${p2.startsWith('/') ? '' : '/'}${p2}`;
-        return `${p1}${fullUrl}${p3}`;
-      })
-      .replace(/content="https:\/\/loanydetalles\.com\/"/g, `content="${pageUrl}"`);
+    // Si se prueba en un entorno local o túnel de prueba (ngrok/localhost),
+    // adaptamos la URL de la imagen para que coincida con el servidor de prueba
+    if (host && !host.includes('loanydetalles.site')) {
+      const protocol = req.headers['x-forwarded-proto'] || req.protocol || 'http';
+      const localBaseUrl = `${protocol}://${host}`;
+      dynamicHtml = dynamicHtml
+        .replace(/https:\/\/loanydetalles\.site\/img\/og-preview\.jpg/g, `${localBaseUrl}/img/og-preview.jpg`)
+        .replace(/https:\/\/loanydetalles\.site\//g, `${localBaseUrl}/`);
+    }
 
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.send(dynamicHtml);
