@@ -470,90 +470,8 @@
             </p>
           </div>
 
-          <div class="special-dates-grid">
-            <!-- Ramo Floral Hello Kitty & Maquillaje (1.jpg) -->
-            <div class="popular-alert-card" onclick="openProductModal('tendencia-ramo-hello-kitty')">
-              <div class="popular-card-badge">
-                <i class="fa-solid fa-fire"></i> Tendencia Viral
-              </div>
-              <div class="popular-card-img-wrap">
-                <img src="assets/populares/1-opt.jpg" alt="Ramo Floral Hello Kitty & Maquillaje" loading="lazy">
-              </div>
-              <div class="popular-card-body">
-                <span class="popular-card-tag">Nuevo en Tendencia</span>
-                <h4 class="popular-card-name">Ramo Floral Hello Kitty & Maquillaje</h4>
-                <div class="popular-card-footer">
-                  <span class="popular-card-price" style="font-size: 0.88rem; color: var(--primary);"><i class="fa-brands fa-whatsapp"></i> A Consultar</span>
-                  <button type="button" class="btn-popular-action" onclick="event.stopPropagation(); orderDirectWhatsApp('tendencia-ramo-hello-kitty')">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    <span>Pedir</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Box Sorpresa Hello Kitty Glamour & Rosas (2.jpg) -->
-            <div class="popular-alert-card" onclick="openProductModal('tendencia-box-hello-kitty-glam')">
-              <div class="popular-card-badge">
-                <i class="fa-solid fa-fire"></i> Más Pedido
-              </div>
-              <div class="popular-card-img-wrap">
-                <img src="assets/populares/2-opt.jpg" alt="Box Sorpresa Hello Kitty Glamour & Rosas" loading="lazy">
-              </div>
-              <div class="popular-card-body">
-                <span class="popular-card-tag">Box en Tendencia</span>
-                <h4 class="popular-card-name">Box Sorpresa Hello Kitty Glamour & Rosas</h4>
-                <div class="popular-card-footer">
-                  <span class="popular-card-price" style="font-size: 0.88rem; color: var(--primary);"><i class="fa-brands fa-whatsapp"></i> A Consultar</span>
-                  <button type="button" class="btn-popular-action" onclick="event.stopPropagation(); orderDirectWhatsApp('tendencia-box-hello-kitty-glam')">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    <span>Pedir</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Box Sanrio My Melody con Luces LED (3.jpg) -->
-            <div class="popular-alert-card" onclick="openProductModal('tendencia-box-my-melody-beauty')">
-              <div class="popular-card-badge">
-                <i class="fa-solid fa-fire"></i> Edición Sanrio
-              </div>
-              <div class="popular-card-img-wrap">
-                <img src="assets/populares/3-opt.jpg" alt="Box Sanrio My Melody con Luces LED" loading="lazy">
-              </div>
-              <div class="popular-card-body">
-                <span class="popular-card-tag">Con Luces LED</span>
-                <h4 class="popular-card-name">Box Sanrio My Melody & Sweet Beauty</h4>
-                <div class="popular-card-footer">
-                  <span class="popular-card-price" style="font-size: 0.88rem; color: var(--primary);"><i class="fa-brands fa-whatsapp"></i> A Consultar</span>
-                  <button type="button" class="btn-popular-action" onclick="event.stopPropagation(); orderDirectWhatsApp('tendencia-box-my-melody-beauty')">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    <span>Pedir</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Box Hello Kitty Belleza & Cuidado Facial (4.jpg) -->
-            <div class="popular-alert-card" onclick="openProductModal('tendencia-box-hello-kitty-skincare')">
-              <div class="popular-card-badge">
-                <i class="fa-solid fa-fire"></i> Skincare & Belleza
-              </div>
-              <div class="popular-card-img-wrap">
-                <img src="assets/populares/4-opt.jpg" alt="Box Hello Kitty Belleza & Cuidado Facial" loading="lazy">
-              </div>
-              <div class="popular-card-body">
-                <span class="popular-card-tag">Cuidado Facial</span>
-                <h4 class="popular-card-name">Box Hello Kitty Belleza & Skincare</h4>
-                <div class="popular-card-footer">
-                  <span class="popular-card-price" style="font-size: 0.88rem; color: var(--primary);"><i class="fa-brands fa-whatsapp"></i> A Consultar</span>
-                  <button type="button" class="btn-popular-action" onclick="event.stopPropagation(); orderDirectWhatsApp('tendencia-box-hello-kitty-skincare')">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    <span>Pedir</span>
-                  </button>
-                </div>
-              </div>
-            </div>
+          <div class="special-dates-grid" id="special-dates-grid">
+            <!-- Renderizado dinámicamente desde data/products.js (categoría 'populares') -->
           </div>
 
           <div class="special-dates-cta-bar">
@@ -752,17 +670,6 @@
             <h4>Arreglos preparados bajo pedido</h4>
             <p>Flores frescas seleccionadas diariamente para asegurar la máxima vida floral.</p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         BANNER INSTITUCIONAL DE MARCA (PREVIEW EN LINK & PRESENTACIÓN)
-         ========================================================================== -->
-    <section class="brand-banner-section">
-      <div class="container">
-        <div class="brand-banner-card">
-          <img src="assets/branding/banner-og.jpg" alt="Loany Detalles - Flores, Regalos y Momentos" class="brand-banner-img" loading="lazy">
         </div>
       </div>
     </section>
@@ -987,7 +894,7 @@
         <!-- Renderizado por js/app.js -->
       </div>
 
-      <div class="cart-drawer-footer">
+      <div class="cart-drawer-footer" id="cart-drawer-footer">
         <!-- Selector de Modalidad -->
         <div class="cart-mode-selector">
           <button type="button" class="mode-tab-btn active" id="btn-mode-delivery" onclick="setOrderMode('delivery')">
@@ -1000,7 +907,7 @@
           </button>
         </div>
 
-        <!-- Formulario: Si elige Delivery -->
+        <!-- Formulario Prioritario: Si elige Delivery -->
         <div id="cart-delivery-fields" class="cart-form-section">
           <div class="cart-form-title">
             <i class="fa-solid fa-truck-fast"></i>
@@ -1009,46 +916,42 @@
 
           <div class="cart-input-group">
             <label for="delivery-name">Nombre de quien recibe:</label>
-            <input type="text" id="delivery-name" class="cart-input" placeholder="Nombre y apellido completos">
+            <input type="text" id="delivery-name" class="cart-input" placeholder="Nombre completo del destinatario" required>
+          </div>
+
+          <div class="cart-input-group">
+            <label for="delivery-address">Dirección o Distrito de entrega:</label>
+            <input type="text" id="delivery-address" class="cart-input" placeholder="Calle / Jr. / Av., número y distrito" required>
           </div>
 
           <div class="cart-input-row">
-            <div class="cart-input-group">
-              <label for="delivery-phone">Teléfono / Celular:</label>
-              <input type="tel" id="delivery-phone" class="cart-input" placeholder="Ej. 904 156 666">
-            </div>
             <div class="cart-input-group">
               <label for="delivery-date">Fecha de entrega:</label>
-              <input type="date" id="delivery-date" class="cart-input">
+              <input type="date" id="delivery-date" class="cart-input" required>
             </div>
-          </div>
-          <div class="cart-special-date-notice">
-            <i class="fa-solid fa-calendar-check"></i>
-            <span>Para fechas especiales y aniversarios, recomendamos reservar con anticipación para asegurar su cupo de entrega.</span>
-          </div>
-
-          <div class="cart-input-group" style="margin-top: 12px;">
-            <label for="delivery-address">Dirección exacta de entrega:</label>
-            <input type="text" id="delivery-address" class="cart-input" placeholder="Av. / Jr. / Calle, número y distrito">
+            <div class="cart-input-group">
+              <label for="delivery-phone">Teléfono / Celular (Opcional):</label>
+              <input type="tel" id="delivery-phone" class="cart-input" placeholder="Ej. 904 156 666">
+            </div>
           </div>
 
           <div class="cart-input-row">
             <div class="cart-input-group">
-              <label for="delivery-ref">Referencia:</label>
+              <label for="delivery-ref">Referencia (Opcional):</label>
               <input type="text" id="delivery-ref" class="cart-input" placeholder="Color de fachada, frente a...">
             </div>
             <div class="cart-input-group">
-              <label for="delivery-time">Rango de horario:</label>
+              <label for="delivery-time">Horario preferente:</label>
               <select id="delivery-time" class="cart-input">
                 <option value="Mañana (9:00 am - 1:00 pm)">Mañana (9:00 am - 1:00 pm)</option>
                 <option value="Tarde (2:00 pm - 6:30 pm)">Tarde (2:00 pm - 6:30 pm)</option>
-                <option value="Inmediato / Coordinar">Inmediato / Coordinar</option>
+                <option value="A coordinar por WhatsApp">A coordinar por WhatsApp</option>
               </select>
             </div>
           </div>
         </div>
 
-        <!-- Formulario: Si elige Recojo en Tienda -->
+        <!-- Formulario Prioritario: Si elige Recojo en Tienda -->
         <div id="cart-pickup-fields" class="cart-form-section" style="display: none;">
           <div class="cart-form-title">
             <i class="fa-solid fa-shop"></i>
@@ -1064,38 +967,26 @@
           </div>
 
           <div class="cart-input-group">
-            <label for="pickup-name">Nombre de quien recoge:</label>
-            <input type="text" id="pickup-name" class="cart-input" placeholder="Persona que retirará el arreglo">
+            <label for="pickup-name">Nombre de quien retira:</label>
+            <input type="text" id="pickup-name" class="cart-input" placeholder="Persona que retirará el arreglo" required>
           </div>
 
           <div class="cart-input-row">
             <div class="cart-input-group">
-              <label for="pickup-phone">Teléfono / Celular:</label>
-              <input type="tel" id="pickup-phone" class="cart-input" placeholder="Ej. 904 156 666">
+              <label for="pickup-date">Fecha de recojo:</label>
+              <input type="date" id="pickup-date" class="cart-input" required>
             </div>
             <div class="cart-input-group">
-              <label for="pickup-date">Fecha de recojo:</label>
-              <input type="date" id="pickup-date" class="cart-input">
+              <label for="pickup-phone">Celular (Opcional):</label>
+              <input type="tel" id="pickup-phone" class="cart-input" placeholder="Ej. 904 156 666">
             </div>
-          </div>
-          <div class="cart-special-date-notice">
-            <i class="fa-solid fa-calendar-check"></i>
-            <span>Horario de atención en tienda: 10:00 am a 7:30 pm en Galerías Qori Wasi (Stand 218).</span>
-          </div>
-
-          <div class="cart-input-group">
-            <label for="pickup-time">Horario estimado:</label>
-            <select id="pickup-time" class="cart-input">
-              <option value="Mañana (10:00 am - 1:00 pm)">Mañana (10:00 am - 1:00 pm)</option>
-              <option value="Tarde (2:30 pm - 7:30 pm)">Tarde (2:30 pm - 7:30 pm)</option>
-            </select>
           </div>
         </div>
 
-        <!-- Dedicatoria -->
+        <!-- Dedicatoria (Opcional) -->
         <div class="cart-dedication-box">
-          <label for="cart-dedication">Dedicatoria para la tarjeta (Sin costo):</label>
-          <textarea id="cart-dedication" class="cart-input" placeholder="De: ... Para: ... Mensaje: ..."></textarea>
+          <label for="cart-dedication">Dedicatoria para la tarjeta (Opcional):</label>
+          <textarea id="cart-dedication" class="cart-input" placeholder="De: ... Para: ... Mensaje (puede coordinarse también por WhatsApp)..."></textarea>
         </div>
 
         <div class="cart-total-row">

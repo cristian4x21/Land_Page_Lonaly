@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroFlagship();
   initDatePickers();
   initLiveDemandAlert();
+  renderPopularDates();
   renderProducts();
   setupEventListeners();
   updateCartUI();
@@ -279,19 +280,58 @@ function renderProducts() {
 }
 
 // ==========================================================================
-// FILTROS Y CATEGORÍAS
+// RENDERIZADO DINÁMICO DE FECHAS ESPECIALES & RAMOS POPULARES
+// ==========================================================================
+function renderPopularDates() {
+  const container = document.getElementById('special-dates-grid');
+  if (!container) return;
+
+  const populars = PRODUCTS.filter(p => p.category === 'populares');
+  container.innerHTML = populars.map(p => `
+    <div class="popular-alert-card" onclick="openProductModal('${p.id}')">
+      <div class="popular-card-badge">
+        <i class="fa-solid fa-fire"></i> ${p.tag || 'Tendencia Viral'}
+      </div>
+      <div class="popular-card-img-wrap">
+        <img src="${p.image}" alt="${p.name}" loading="lazy">
+      </div>
+      <div class="popular-card-body">
+        <span class="popular-card-tag">${p.categoryLabel || 'En Tendencia'}</span>
+        <h4 class="popular-card-name">${p.name}</h4>
+        <div class="popular-card-footer">
+          <span class="popular-card-price" style="font-size: 0.88rem; color: var(--primary);">
+            <i class="fa-brands fa-whatsapp"></i> A Consultar
+          </span>
+          <button type="button" class="btn-popular-action" onclick="event.stopPropagation(); orderDirectWhatsApp('${p.id}')">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>Pedir</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ==========================================================================
+// FILTROS Y CATEGORÍAS (TRANSICIÓN VISUAL SUAVE CON FADE-IN)
 // ==========================================================================
 window.setFilter = function(filterCategory) {
   currentFilter = filterCategory;
   const tabs = document.querySelectorAll('.filter-tab');
   tabs.forEach(tab => {
-    if (tab.dataset.filter === filterCategory) {
-      tab.classList.add('active');
-    } else {
-      tab.classList.remove('active');
-    }
+    tab.classList.toggle('active', tab.dataset.filter === filterCategory);
   });
-  renderProducts();
+
+  const grid = document.getElementById('products-grid');
+  if (grid) {
+    grid.classList.add('is-filtering');
+    setTimeout(() => {
+      renderProducts();
+      grid.classList.remove('is-filtering');
+    }, 120);
+  } else {
+    renderProducts();
+  }
 
   const catalogEl = document.getElementById('catalogo');
   if (catalogEl && (window.scrollY > catalogEl.offsetTop + 400 || window.scrollY < catalogEl.offsetTop - 300)) {
@@ -385,9 +425,11 @@ function updateCartUI() {
 
   const drawerItems = document.getElementById('cart-drawer-items');
   const btnCheckout = document.getElementById('btn-checkout-wa');
+  const cartFooter = document.getElementById('cart-drawer-footer');
   if (!drawerItems) return;
 
   if (cart.length === 0) {
+    if (cartFooter) cartFooter.style.display = 'none';
     drawerItems.innerHTML = `
       <div class="cart-empty-state">
         <i class="fa-solid fa-basket-shopping" style="font-size: 2.8rem; color: #ab9aa1; margin: 0 auto 14px; display: block;"></i>
@@ -402,6 +444,7 @@ function updateCartUI() {
       btnCheckout.style.pointerEvents = 'none';
     }
   } else {
+    if (cartFooter) cartFooter.style.display = 'block';
     if (btnCheckout) {
       btnCheckout.disabled = false;
       btnCheckout.style.opacity = '1';
@@ -454,6 +497,8 @@ window.openMobileNav = function() {
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
+  const elAlert = document.getElementById('live-popular-alert');
+  if (elAlert) elAlert.classList.remove('show');
 };
 
 window.closeMobileNav = function() {
@@ -470,6 +515,8 @@ window.openCartDrawer = function() {
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
+  const elAlert = document.getElementById('live-popular-alert');
+  if (elAlert) elAlert.classList.remove('show');
 };
 
 window.closeCartDrawer = function() {
@@ -652,6 +699,10 @@ window.openProductModal = function(productId) {
   const product = PRODUCTS.find(p => p.id === productId);
   const modalOverlay = document.getElementById('product-modal-overlay');
   if (!product || !modalOverlay) return;
+
+  // Ocultar alerta emergente para no competir ni tapar botones
+  const elAlert = document.getElementById('live-popular-alert');
+  if (elAlert) elAlert.classList.remove('show');
 
   const isQuote = product.isQuoteOnly || product.price === 0;
 
@@ -880,7 +931,7 @@ function initLiveDemandAlert() {
   // Pausar en hover para permitir lectura cómoda
   elAlert.addEventListener('mouseenter', () => {
     if (demandAutoHideTimer) { clearTimeout(demandAutoHideTimer); demandAutoHideTimer = null; }
-    if (demandAlertTimer) clearInterval(demandAlertTimer);
+    if (demandAlertTimer) clearTimeout(demandAlertTimer);
   });
   elAlert.addEventListener('mouseleave', () => {
     if (!demandAlertDismissed) {
@@ -888,27 +939,33 @@ function initLiveDemandAlert() {
     }
   });
 
-  // Primera aparición suave a los 5 segundos
+  // Primera aparición moderada a los 22 segundos para no saturar al entrar
   setTimeout(() => {
     if (!demandAlertDismissed) {
       showNextDemandAlert();
     }
-  }, 5000);
+  }, 22000);
 }
 
 function scheduleNextDemandAlert() {
-  if (demandAlertTimer) clearInterval(demandAlertTimer);
+  if (demandAlertTimer) clearTimeout(demandAlertTimer);
   demandAlertTimer = setTimeout(() => {
     if (!demandAlertDismissed) {
       showNextDemandAlert();
     }
-  }, 16000);
+  }, 45000); // Espaciado amplio a 45 segundos para no estorbar
 }
 
 function showNextDemandAlert() {
   if (demandAlertDismissed) return;
   const elAlert = document.getElementById('live-popular-alert');
   if (!elAlert) return;
+
+  // Si el usuario tiene abierto un modal o el carrito, no mostrar alertas
+  if (document.body.style.overflow === 'hidden') {
+    scheduleNextDemandAlert();
+    return;
+  }
 
   const item = POPULAR_DEMAND_ITEMS[currentDemandIndex];
   currentDemandIndex = (currentDemandIndex + 1) % POPULAR_DEMAND_ITEMS.length;
@@ -932,15 +989,15 @@ function showNextDemandAlert() {
 
   elAlert.classList.add('show');
 
-  // Auto-ocultar después de 8 segundos si el usuario no interactúa
+  // Auto-ocultar después de 5 segundos si el usuario no interactúa
   if (demandAutoHideTimer) clearTimeout(demandAutoHideTimer);
   demandAutoHideTimer = setTimeout(() => {
     if (!demandAlertDismissed && elAlert.classList.contains('show')) {
       elAlert.classList.remove('show');
-      // Programar la siguiente aparición
+      // Programar la siguiente aparición amplia
       scheduleNextDemandAlert();
     }
-  }, 8000);
+  }, 5000);
 }
 
 window.dismissLiveDemandAlert = function() {

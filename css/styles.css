@@ -140,8 +140,8 @@ button {
   font-weight: 700;
   font-size: 0.9rem;
   letter-spacing: 0.3px;
-  border: 1.5px solid var(--border-light);
-  box-shadow: var(--shadow-sm);
+  border: 1.5px solid var(--primary);
+  box-shadow: 0 2px 8px rgba(142, 47, 76, 0.08);
   transition: var(--transition);
   cursor: pointer;
   text-decoration: none;
@@ -149,9 +149,9 @@ button {
 
 .btn-secondary:hover {
   background: var(--primary-light);
-  border-color: var(--accent-rose);
+  border-color: var(--primary-hover);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 14px rgba(142, 47, 76, 0.16);
   color: var(--primary-dark);
 }
 
@@ -1645,6 +1645,12 @@ button {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.products-grid.is-filtering {
+  opacity: 0.25;
+  transform: translateY(4px);
 }
 
 .product-card {
@@ -1657,6 +1663,18 @@ button {
   flex-direction: column;
   transition: var(--transition);
   position: relative;
+  animation: cardEntrance 0.35s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .product-card:hover {
