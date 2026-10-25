@@ -3011,6 +3011,9 @@ i.fa-solid, i.fa-brands, i.fa-regular {
   .hero-grid {
     gap: 52px;
   }
+  .special-dates-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 /* Desktop compacto y tablets en horizontal (<= 1180px) */
@@ -3115,34 +3118,103 @@ i.fa-solid, i.fa-brands, i.fa-regular {
   .hero-flower-img {
     max-height: 310px;
   }
+  /* ---- Sección populares mobile: tarjetas horizontales ---- */
   .special-dates-banner {
-    padding: 24px 18px;
+    padding: 20px 14px;
+    border-radius: 18px;
   }
   .special-dates-title {
-    font-size: 1.35rem;
+    font-size: 1.2rem;
+  }
+  .special-dates-subtitle {
+    font-size: 0.82rem;
+    line-height: 1.5;
   }
   .special-dates-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
+  /* Tarjeta popular en modo horizontal en móvil */
+  .popular-alert-card {
+    flex-direction: row;
+    align-items: center;
+    padding: 12px;
     gap: 14px;
   }
-  .product-thumb-container {
-    height: 190px;
-    padding: 12px;
+  .popular-card-badge {
+    top: 8px;
+    left: 8px;
+    font-size: 0.6rem;
+    padding: 2px 7px;
   }
-  .product-body {
-    padding: 12px;
+  .popular-card-img-wrap {
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+    margin-bottom: 0;
+    border-radius: var(--radius-sm);
+    background: var(--primary-light);
+    padding: 6px;
   }
-  .product-name {
-    font-size: 0.95rem;
+  .popular-card-body {
+    flex: 1;
+    min-width: 0;
   }
-  .product-desc {
+  .popular-card-tag {
+    font-size: 0.63rem;
+    margin-bottom: 2px;
+  }
+  .popular-card-name {
+    font-size: 0.84rem;
+    margin-bottom: 8px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+  .popular-card-footer {
+    padding-top: 6px;
+  }
+  .special-dates-cta-bar {
+    flex-direction: column;
+    text-align: center;
+    padding: 14px 16px;
+    gap: 12px;
+  }
+  .cta-bar-info {
+    justify-content: center;
+    font-size: 0.8rem;
+  }
+  /* ---- Catálogo de productos mobile ---- */
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .product-thumb-container {
+    height: 170px;
+    padding: 12px;
+  }
+  .product-body {
+    padding: 10px 12px 14px;
+  }
+  .product-name {
+    font-size: 0.88rem;
+    margin-bottom: 4px;
+  }
+  .product-desc {
+    font-size: 0.78rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .product-price {
+    font-size: 1.15rem;
+  }
+  .btn-add-cart {
+    padding: 9px 14px;
+    font-size: 0.78rem;
   }
   .occasions-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -3167,17 +3239,43 @@ i.fa-solid, i.fa-brands, i.fa-regular {
     grid-template-columns: 1fr;
     gap: 28px;
   }
+  /* ---- Alerta flotante de demanda ---- */
   .live-popular-alert {
-    bottom: 84px;
-    left: 14px;
-    width: calc(100% - 28px);
+    bottom: 80px;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    max-width: none;
+    padding: 12px 14px;
   }
 }
 
 /* Teléfonos móviles pequeños (<= 480px) */
 @media (max-width: 480px) {
-  .products-grid, .collections-grid {
+  .products-grid {
     grid-template-columns: 1fr;
+  }
+  .collections-grid {
+    grid-template-columns: 1fr;
+  }
+  .product-thumb-container {
+    height: 220px;
+    padding: 16px;
+  }
+  .product-body {
+    padding: 14px;
+  }
+  .product-name {
+    font-size: 1rem;
+  }
+  .product-desc {
+    font-size: 0.82rem;
+    -webkit-line-clamp: 3;
+  }
+  /* Popular cards: imagen más grande en móvil pequeño */
+  .popular-card-img-wrap {
+    width: 80px;
+    height: 80px;
   }
   .occasions-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -3206,5 +3304,12 @@ i.fa-solid, i.fa-brands, i.fa-regular {
   .floating-whatsapp {
     padding: 14px;
     border-radius: 50%;
+  }
+  /* Alerta de demanda en pantalla pequeña */
+  .live-popular-alert {
+    bottom: 74px;
+    left: 10px;
+    right: 10px;
+    width: auto;
   }
 }

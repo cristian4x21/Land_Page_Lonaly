@@ -871,6 +871,7 @@ const POPULAR_DEMAND_ITEMS = [
 let demandAlertTimer = null;
 let currentDemandIndex = 0;
 let demandAlertDismissed = false;
+let demandAutoHideTimer = null;
 
 function initLiveDemandAlert() {
   const elAlert = document.getElementById('live-popular-alert');
@@ -878,21 +879,30 @@ function initLiveDemandAlert() {
 
   // Pausar en hover para permitir lectura cómoda
   elAlert.addEventListener('mouseenter', () => {
+    if (demandAutoHideTimer) { clearTimeout(demandAutoHideTimer); demandAutoHideTimer = null; }
     if (demandAlertTimer) clearInterval(demandAlertTimer);
   });
   elAlert.addEventListener('mouseleave', () => {
     if (!demandAlertDismissed) {
-      demandAlertTimer = setInterval(showNextDemandAlert, 18000);
+      scheduleNextDemandAlert();
     }
   });
 
-  // Primera aparición suave a los 4.5 segundos
+  // Primera aparición suave a los 5 segundos
   setTimeout(() => {
     if (!demandAlertDismissed) {
       showNextDemandAlert();
-      demandAlertTimer = setInterval(showNextDemandAlert, 18000);
     }
-  }, 4500);
+  }, 5000);
+}
+
+function scheduleNextDemandAlert() {
+  if (demandAlertTimer) clearInterval(demandAlertTimer);
+  demandAlertTimer = setTimeout(() => {
+    if (!demandAlertDismissed) {
+      showNextDemandAlert();
+    }
+  }, 16000);
 }
 
 function showNextDemandAlert() {
@@ -922,12 +932,15 @@ function showNextDemandAlert() {
 
   elAlert.classList.add('show');
 
-  // Ocultar suavemente después de 7 segundos si el usuario no interactúa
-  setTimeout(() => {
+  // Auto-ocultar después de 8 segundos si el usuario no interactúa
+  if (demandAutoHideTimer) clearTimeout(demandAutoHideTimer);
+  demandAutoHideTimer = setTimeout(() => {
     if (!demandAlertDismissed && elAlert.classList.contains('show')) {
       elAlert.classList.remove('show');
+      // Programar la siguiente aparición
+      scheduleNextDemandAlert();
     }
-  }, 7000);
+  }, 8000);
 }
 
 window.dismissLiveDemandAlert = function() {
@@ -935,8 +948,12 @@ window.dismissLiveDemandAlert = function() {
   const elAlert = document.getElementById('live-popular-alert');
   if (elAlert) elAlert.classList.remove('show');
   if (demandAlertTimer) {
-    clearInterval(demandAlertTimer);
+    clearTimeout(demandAlertTimer);
     demandAlertTimer = null;
+  }
+  if (demandAutoHideTimer) {
+    clearTimeout(demandAutoHideTimer);
+    demandAutoHideTimer = null;
   }
 };
 
