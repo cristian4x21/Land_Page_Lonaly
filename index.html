@@ -43,15 +43,15 @@
   <!-- ==========================================================================
        TOP ANNOUNCEMENT BAR
        ========================================================================== -->
-  <aside class="announcement-bar">
-    <div class="container announcement-content">
+  <aside class="announcement-bar" id="top-announcement-bar">
+    <div class="announcement-content">
       <span class="announcement-pill">
         <i class="fa-solid fa-truck-fast"></i>
         Envíos Hoy
       </span>
-      <span>Entregas el mismo día disponibles en la ciudad • Pedidos directos al WhatsApp: <a href="https://wa.me/51904156666" target="_blank" style="color: #ffffff; text-decoration: underline; font-weight: 700;">+51 904 156 666</a></span>
+      <span class="announcement-text">Entregas el mismo día disponibles • WhatsApp: <a href="https://wa.me/51904156666" target="_blank" class="announcement-link">+51 904 156 666</a></span>
     </div>
-    <button class="announcement-close" aria-label="Cerrar notificación">
+    <button class="announcement-close" onclick="document.getElementById('top-announcement-bar').style.display='none'" aria-label="Cerrar notificación">
       <i class="fa-solid fa-xmark"></i>
     </button>
   </aside>
