@@ -12,6 +12,19 @@ const CONFIG = {
 };
 
 // ==========================================================================
+// GOOGLE ANALYTICS 4 (G-BJ65CJNRQZ) - EVENT TRACKING HELPER
+// ==========================================================================
+function trackGA4Event(eventName, params = {}) {
+  try {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, params);
+    }
+  } catch (e) {
+    // Silencioso en caso de adblock o sin conexión
+  }
+}
+
+// ==========================================================================
 // ARREGLOS INSIGNIA PARA EL HERO SHOWCASE
 // ==========================================================================
 const FLAGSHIP_BOUQUETS = [
@@ -390,6 +403,18 @@ window.addToCart = function(productId, showDrawer = true) {
   updateCartUI();
   showToast(`«${product.name}» añadido al pedido`);
 
+  trackGA4Event('add_to_cart', {
+    currency: 'PEN',
+    value: product.price || 0,
+    items: [{
+      item_id: product.id,
+      item_name: product.name,
+      item_category: product.categoryLabel,
+      price: product.price || 0,
+      quantity: 1
+    }]
+  });
+
   if (showDrawer) {
     openCartDrawer();
   }
@@ -662,6 +687,16 @@ ${dedicationSection}
 Quedo a la espera de su confirmación para proceder con el abono vía Yape / Plin / Transferencia. Muchas gracias.`;
 
   const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(fullMessage)}`;
+  trackGA4Event('begin_checkout', {
+    currency: 'PEN',
+    value: subtotal,
+    items: cart.map(item => ({
+      item_id: item.id,
+      item_name: item.name,
+      price: item.price || 0,
+      quantity: item.quantity
+    }))
+  });
   window.open(url, '_blank');
 };
 
@@ -700,6 +735,13 @@ Agradeceré me brinden los detalles para la entrega y los datos de pago. Muchas 
   }
 
   const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+  trackGA4Event('generate_lead', {
+    currency: 'PEN',
+    value: product.price || 0,
+    item_id: product.id,
+    item_name: product.name,
+    category: product.categoryLabel
+  });
   window.open(url, '_blank');
 };
 
@@ -714,6 +756,17 @@ window.openProductModal = function(productId) {
   // Ocultar alerta emergente para no competir ni tapar botones
   const elAlert = document.getElementById('live-popular-alert');
   if (elAlert) elAlert.classList.remove('show');
+
+  trackGA4Event('view_item', {
+    currency: 'PEN',
+    value: product.price || 0,
+    items: [{
+      item_id: product.id,
+      item_name: product.name,
+      item_category: product.categoryLabel,
+      price: product.price || 0
+    }]
+  });
 
   const isQuote = product.isQuoteOnly || product.price === 0;
 
