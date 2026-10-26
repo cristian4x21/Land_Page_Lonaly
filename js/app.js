@@ -193,7 +193,7 @@ function renderProducts() {
     const matchesCategory = 
       currentFilter === 'todos' || 
       (currentFilter === 'gratis' && p.freeDelivery) ||
-      (currentFilter === 'populares' && (p.featured || p.category === 'populares')) ||
+      (currentFilter === 'populares' && (p.featured || WEEKLY_POPULAR_IDS.includes(p.id))) ||
       p.category === currentFilter;
 
     const matchesSearch = 
@@ -279,6 +279,14 @@ function renderProducts() {
   }).join('');
 }
 
+// Arreglos más populares y demandados de la semana (actualización semanal)
+const WEEKLY_POPULAR_IDS = [
+  'ramo-buchon-frase',
+  'ramo-gatito',
+  'ramo-amor-verdadero',
+  'ramo-eterno-rapunzel'
+];
+
 // ==========================================================================
 // RENDERIZADO DINÁMICO DE FECHAS ESPECIALES & RAMOS POPULARES
 // ==========================================================================
@@ -286,21 +294,24 @@ function renderPopularDates() {
   const container = document.getElementById('special-dates-grid');
   if (!container) return;
 
-  const populars = PRODUCTS.filter(p => p.category === 'populares');
+  const populars = WEEKLY_POPULAR_IDS
+    .map(id => PRODUCTS.find(p => p.id === id))
+    .filter(Boolean);
+
   container.innerHTML = populars.map(p => `
     <div class="popular-alert-card" onclick="openProductModal('${p.id}')">
       <div class="popular-card-badge">
-        <i class="fa-solid fa-fire"></i> ${p.tag || 'Tendencia Viral'}
+        <i class="fa-solid fa-fire"></i> ${p.tag || 'Más Pedido'}
       </div>
       <div class="popular-card-img-wrap">
         <img src="${p.image}" alt="${p.name}" loading="lazy">
       </div>
       <div class="popular-card-body">
-        <span class="popular-card-tag">${p.categoryLabel || 'En Tendencia'}</span>
+        <span class="popular-card-tag">${p.categoryLabel}</span>
         <h4 class="popular-card-name">${p.name}</h4>
         <div class="popular-card-footer">
-          <span class="popular-card-price" style="font-size: 0.88rem; color: var(--primary);">
-            <i class="fa-brands fa-whatsapp"></i> A Consultar
+          <span class="popular-card-price" style="font-size: 1.05rem; font-weight: 700; color: var(--primary);">
+            ${CONFIG.currencySymbol}${p.price.toFixed(2)}
           </span>
           <button type="button" class="btn-popular-action" onclick="event.stopPropagation(); orderDirectWhatsApp('${p.id}')">
             <i class="fa-brands fa-whatsapp"></i>
@@ -870,51 +881,27 @@ function setupEventListeners() {
 // ==========================================================================
 const POPULAR_DEMAND_ITEMS = [
   {
-    id: 'tendencia-ramo-hello-kitty',
-    title: 'Ramo Hello Kitty & Maquillaje',
-    text: 'Nuevo ingreso viral en tendencia con peluche original y kit cosmético.',
-    image: 'assets/populares/1-opt.jpg'
-  },
-  {
-    id: 'tendencia-box-hello-kitty-glam',
-    title: 'Box Hello Kitty Glamour & Rosas',
-    text: 'Caja conmemorativa Sanrio con maquillaje completo y rosas de autor.',
-    image: 'assets/populares/2-opt.jpg'
-  },
-  {
-    id: 'tendencia-box-my-melody-beauty',
-    title: 'Box My Melody con Luces LED',
-    text: 'Edición especial Sanrio con peluche, brochas y luces cálidas LED.',
-    image: 'assets/populares/3-opt.jpg'
-  },
-  {
-    id: 'tendencia-box-hello-kitty-skincare',
-    title: 'Box Hello Kitty Belleza & Skincare',
-    text: 'Set en tendencia de cuidado facial, rizador y cosméticos de alta demanda.',
-    image: 'assets/populares/4-opt.jpg'
-  },
-  {
     id: 'ramo-buchon-frase',
-    title: 'Ramo Buchón 25 Rosas',
-    text: 'Arreglo estrella de alta demanda para fechas especiales y aniversarios.',
+    title: 'Ramo Buchón con Frase Personalizada',
+    text: '25 rosas de exportación con mensaje grabado en cinta. Más pedido de la semana.',
     image: 'assets/products/ramo-buchon-frase.png'
   },
   {
     id: 'ramo-gatito',
-    title: 'Ramo Felino de Autor',
-    text: 'Diseño exclusivo con cupos limitados de confección artesanal esta semana.',
+    title: 'Ramo Gatito de Autor',
+    text: 'Girasoles frescos y tierno peluche gatito. Tendencia de la semana.',
     image: 'assets/products/ramo-gatito.png'
   },
   {
     id: 'ramo-amor-verdadero',
     title: 'Ramo Amor Verdadero',
-    text: 'Favorito para celebraciones románticas con envío gratuito incluido.',
+    text: 'Combinación romántica de rosas rojas y flores selectas con envío incluido.',
     image: 'assets/products/ramo-amor-verdadero.png'
   },
   {
     id: 'ramo-eterno-rapunzel',
-    title: 'Eterno Rapunzel',
-    text: 'Flor permanente tejida a mano con alta demanda para regalos duraderos.',
+    title: 'Ramo Eterno Rapunzel',
+    text: 'Arreglo floral permanente tejido a mano en tonos gala lila y dorado.',
     image: 'assets/products/ramo-eterno-rapunzel.png'
   }
 ];
