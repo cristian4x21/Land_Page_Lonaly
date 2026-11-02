@@ -12,7 +12,7 @@ const CONFIG = {
 };
 
 // ==========================================================================
-// GOOGLE ANALYTICS 4 (G-BJ65CJNRQZ) - EVENT TRACKING HELPER
+// GOOGLE ANALYTICS 4 (G-BJ63CJWRQ2) - EVENT TRACKING HELPER
 // ==========================================================================
 function trackGA4Event(eventName, params = {}) {
   try {
