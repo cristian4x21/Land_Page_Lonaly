@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <!-- Google tag (gtag.js) -->
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJ65CJNRQZ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
     gtag('js', new Date());
 
-    gtag('config', 'G-BJ65CJNRQZ');
+    gtag('config', 'G-BJ65CJNRQZ', {
+      send_page_view: true
+    });
   </script>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loany Detalles | Ramos y Flores</title>
   <meta name="description" content="Floristería artesanal Loany Detalles en Galerías Qori Wasi. Ramos naturales de selección, ramos buchones de gala, flores permanentes y obsequios de alta gama con envíos a domicilio.">
   <link rel="icon" type="image/png" href="assets/branding/logo.png">
@@ -46,7 +51,7 @@
   
   <!-- Iconografía Profesional Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/styles.css?v=3.0">
+  <link rel="stylesheet" href="css/styles.css?v=3.1">
 </head>
 <body>
 
@@ -279,7 +284,7 @@
         <div class="collections-grid">
           <a href="#catalogo" class="collection-card" onclick="setFilter('naturales')">
             <div class="collection-img-box">
-              <img src="assets/products/ramo-vale.png" alt="Floristería Natural">
+              <img src="assets/products/ramo-vale.png" alt="Floristería Natural" loading="lazy" decoding="async">
             </div>
             <div class="collection-details">
               <div>
@@ -294,7 +299,7 @@
 
           <a href="#catalogo" class="collection-card" onclick="setFilter('buchones')">
             <div class="collection-img-box">
-              <img src="assets/products/ramo-buchon.png" alt="Ramos Buchones">
+              <img src="assets/products/ramo-buchon.png" alt="Ramos Buchones" loading="lazy" decoding="async">
             </div>
             <div class="collection-details">
               <div>
@@ -309,7 +314,7 @@
 
           <a href="#catalogo" class="collection-card" onclick="setFilter('eternos')">
             <div class="collection-img-box">
-              <img src="assets/products/ramo-eterno-rapunzel.png" alt="Flores Permanentes">
+              <img src="assets/products/ramo-eterno-rapunzel.png" alt="Flores Permanentes" loading="lazy" decoding="async">
             </div>
             <div class="collection-details">
               <div>
@@ -324,7 +329,7 @@
 
           <a href="#catalogo" class="collection-card" onclick="setFilter('adicionales')">
             <div class="collection-img-box">
-              <img src="assets/products/adicional-peluches.png" alt="Obsequios Complementarios">
+              <img src="assets/products/adicional-peluches.png" alt="Obsequios Complementarios" loading="lazy" decoding="async">
             </div>
             <div class="collection-details">
               <div>
@@ -362,16 +367,16 @@
           <div class="story-media-side">
             <div class="story-workshop-grid">
               <div class="story-workshop-item">
-                <img src="assets/products/ramo-gatito.png" alt="Diseño Felino">
+                <img src="assets/products/ramo-gatito.png" alt="Diseño Felino" loading="lazy" decoding="async">
               </div>
               <div class="story-workshop-item">
-                <img src="assets/products/ramo-snoopy.png" alt="Ramo Snoopy">
+                <img src="assets/products/ramo-snoopy.png" alt="Ramo Snoopy" loading="lazy" decoding="async">
               </div>
               <div class="story-workshop-item">
-                <img src="assets/products/ramo-eterno-snoopy-girasol.png" alt="Eterno Snoopy">
+                <img src="assets/products/ramo-eterno-snoopy-girasol.png" alt="Eterno Snoopy" loading="lazy" decoding="async">
               </div>
               <div class="story-workshop-item">
-                <img src="assets/products/ramo-amor-verdadero.png" alt="Amor Verdadero">
+                <img src="assets/products/ramo-amor-verdadero.png" alt="Amor Verdadero" loading="lazy" decoding="async">
               </div>
             </div>
           </div>
@@ -676,7 +681,7 @@
           </div>
 
           <div class="location-mascot-box">
-            <img src="assets/branding/mascot.png" alt="Loany Detalles">
+            <img src="assets/branding/mascot.png" alt="Loany Detalles" loading="lazy" decoding="async">
             <h4>Arreglos preparados bajo pedido</h4>
             <p>Flores frescas seleccionadas diariamente para asegurar la máxima vida floral.</p>
           </div>
@@ -1089,6 +1094,6 @@
     <span id="toast-message">Notificación</span>
   </div>
 
-  <script type="module" src="js/app.js?v=3.0"></script>
+  <script type="module" src="js/app.js?v=3.1"></script>
 </body>
 </html>
