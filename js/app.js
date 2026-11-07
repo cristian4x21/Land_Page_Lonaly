@@ -40,14 +40,14 @@ const FLAGSHIP_BOUQUETS = [
     name: 'Ramo Adriana',
     price: 129.90,
     originalPrice: 149.90,
-    image: 'assets/products/ramo-adriana.jpg'
+    image: 'assets/products/ramo-adriana.png'
   },
   {
     id: 'ramo-con-cinco-peonias',
     name: 'Ramo con 5 Peonías',
     price: 349.90,
     originalPrice: 400.00,
-    image: 'assets/products/ramo-con-cinco-peonias.jpg'
+    image: 'assets/products/ramo-con-cinco-peonias.png'
   },
   {
     id: 'ramo-amor-verdadero',
@@ -994,13 +994,13 @@ const POPULAR_DEMAND_ITEMS = [
     id: 'ramo-adriana',
     title: 'Ramo Adriana en Tendencia',
     text: 'Tulipanes y peonía de corte exclusivo. Oferta especial de S/. 129.90.',
-    image: 'assets/products/ramo-adriana.jpg'
+    image: 'assets/products/ramo-adriana.png'
   },
   {
     id: 'ramo-con-cinco-peonias',
     title: 'Ramo de Gala 5 Peonías',
     text: 'Edición exclusiva de 5 peonías importadas. Oferta especial de S/. 349.90.',
-    image: 'assets/products/ramo-con-cinco-peonias.jpg'
+    image: 'assets/products/ramo-con-cinco-peonias.png'
   },
   {
     id: 'ramo-buchon-frase',
