@@ -32,24 +32,35 @@ const FLAGSHIP_BOUQUETS = [
     id: 'ramo-buchon-frase',
     name: 'Ramo Buchón 25 Rosas',
     price: 100,
+    originalPrice: null,
     image: 'assets/products/ramo-buchon-frase.png'
   },
   {
-    id: 'ramo-gatito',
-    name: 'Ramo Felino de Autor',
-    price: 45,
-    image: 'assets/products/ramo-gatito.png'
+    id: 'ramo-adriana',
+    name: 'Ramo Adriana',
+    price: 129.90,
+    originalPrice: 149.90,
+    image: 'assets/products/ramo-adriana.jpg'
+  },
+  {
+    id: 'ramo-con-cinco-peonias',
+    name: 'Ramo con 5 Peonías',
+    price: 349.90,
+    originalPrice: 400.00,
+    image: 'assets/products/ramo-con-cinco-peonias.jpg'
   },
   {
     id: 'ramo-amor-verdadero',
     name: 'Amor Verdadero',
     price: 39,
+    originalPrice: null,
     image: 'assets/products/ramo-amor-verdadero.png'
   },
   {
     id: 'ramo-eterno-rapunzel',
     name: 'Eterno Rapunzel',
     price: 49,
+    originalPrice: null,
     image: 'assets/products/ramo-eterno-rapunzel.png'
   }
 ];
@@ -133,7 +144,13 @@ function applyHeroBouquet(bouquet) {
       imgEl.src = bouquet.image;
       imgEl.alt = bouquet.name;
       if (titleEl) titleEl.textContent = bouquet.name;
-      if (priceEl) priceEl.textContent = `${CONFIG.currencySymbol}${bouquet.price}`;
+      if (priceEl) {
+        if (bouquet.originalPrice) {
+          priceEl.innerHTML = `<del style="font-size: 0.92rem; color: #94a3b8; margin-right: 6px; font-weight: 500;">${CONFIG.currencySymbol}${bouquet.originalPrice.toFixed(2)}</del> ${CONFIG.currencySymbol}${bouquet.price.toFixed(2)}`;
+        } else {
+          priceEl.textContent = `${CONFIG.currencySymbol}${Number.isInteger(bouquet.price) ? bouquet.price : bouquet.price.toFixed(2)}`;
+        }
+      }
 
       imgEl.style.opacity = '1';
       imgEl.style.transform = 'translateY(0) scale(1)';
@@ -155,6 +172,13 @@ window.switchHeroBouquet = function(productId) {
 
   // Reiniciar autoplay tras interacción del usuario
   startFlagshipAutoplay();
+};
+
+window.openCurrentHeroBouquet = function() {
+  const current = FLAGSHIP_BOUQUETS[currentFlagshipIndex];
+  if (current) {
+    openProductModal(current.id);
+  }
 };
 
 // ==========================================================================

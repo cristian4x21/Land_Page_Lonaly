@@ -51,7 +51,7 @@
   
   <!-- Iconografía Profesional Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/styles.css?v=3.2">
+  <link rel="stylesheet" href="css/styles.css?v=3.3">
 </head>
 <body>
 
@@ -179,8 +179,11 @@
                   <button class="flagship-btn active" onclick="switchHeroBouquet('ramo-buchon-frase')">
                     Ramo Buchón 25 Rosas
                   </button>
-                  <button class="flagship-btn" onclick="switchHeroBouquet('ramo-gatito')">
-                    Ramo Felino de Autor
+                  <button class="flagship-btn" onclick="switchHeroBouquet('ramo-adriana')">
+                    Ramo Adriana
+                  </button>
+                  <button class="flagship-btn" onclick="switchHeroBouquet('ramo-con-cinco-peonias')">
+                    Ramo 5 Peonías
                   </button>
                   <button class="flagship-btn" onclick="switchHeroBouquet('ramo-amor-verdadero')">
                     Amor Verdadero
@@ -196,13 +199,13 @@
             <div class="hero-visual-wrapper">
               <div class="hero-image-backdrop"></div>
               
-              <div class="hero-flower-showcase">
+              <div class="hero-flower-showcase" style="cursor: pointer;" onclick="openCurrentHeroBouquet()" title="Ver detalles del arreglo">
                 <img id="hero-display-img" class="hero-main-flower-img" src="assets/products/ramo-buchon-frase.png" alt="Ramo Insignia Loany Detalles">
               </div>
 
-              <div class="hero-price-tag" id="hero-price-tag">
+              <div class="hero-price-tag" id="hero-price-tag" style="cursor: pointer;" onclick="openCurrentHeroBouquet()" title="Ver detalles del arreglo">
                 <span class="label" id="hero-price-title">Ramo Buchón 25 Rosas</span>
-                <div class="price" id="hero-price-amount">S/. 100</div>
+                <div class="price" id="hero-price-amount">S/. 100.00</div>
               </div>
 
               <div class="hero-quality-badge">
@@ -1095,6 +1098,6 @@
     <span id="toast-message">Notificación</span>
   </div>
 
-  <script type="module" src="js/app.js?v=3.2"></script>
+  <script type="module" src="js/app.js?v=3.3"></script>
 </body>
 </html>
