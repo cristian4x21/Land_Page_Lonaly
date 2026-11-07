@@ -233,18 +233,26 @@ function renderProducts() {
     const isQuote = p.isQuoteOnly || p.price === 0;
     const priceDisplay = isQuote
       ? `<span class="product-price quote-price" style="font-size: 0.95rem; color: var(--primary);"><i class="fa-brands fa-whatsapp"></i> A Consultar</span>`
-      : `<span class="product-price">${CONFIG.currencySymbol}${p.price}</span>`;
+      : `<span class="product-price">${CONFIG.currencySymbol}${p.price.toFixed(2)}</span>`;
     const pricePrefix = isQuote ? 'Cotización' : 'Precio';
     const waBtnText = isQuote ? 'Cotizar' : 'Pedir';
     const waBtnTitle = isQuote ? 'Cotizar por WhatsApp' : 'Pedir por WhatsApp';
     const addCartTitle = isQuote ? 'Añadir para Cotizar' : 'Añadir al Carrito';
 
+    const oldPriceDisplay = p.originalPrice 
+      ? `<span class="product-price-old"><del>${CONFIG.currencySymbol}${p.originalPrice.toFixed(2)}</del></span>` 
+      : '';
+
+    const deliveryNoteDisplay = p.freeDelivery
+      ? `<div class="product-delivery-note"><i class="fa-solid fa-truck-fast"></i> <span>Envío gratis • <strong>Consultar cobertura de entrega</strong></span></div>`
+      : '';
+
     return `
       <article class="product-card" data-id="${p.id}">
         <div class="product-thumb-container">
           <div class="product-badge-stack">
-            ${p.featured ? `<span class="badge-tag badge-popular"><i class="fa-solid fa-fire"></i> Popular</span>` : (p.tag ? `<span class="badge-tag">${p.tag}</span>` : '')}
-            ${p.freeDelivery ? `<span class="badge-delivery"><i class="fa-solid fa-truck-fast"></i> Envío Gratis</span>` : ''}
+            ${p.featured ? `<span class="badge-tag badge-popular"><i class="fa-solid fa-fire"></i> ${p.tag || 'Popular'}</span>` : (p.tag ? `<span class="badge-tag">${p.tag}</span>` : '')}
+            ${p.freeDelivery ? `<span class="badge-delivery" title="Consultar cobertura de entrega"><i class="fa-solid fa-truck-fast"></i> Envío Gratis</span>` : ''}
           </div>
           <img src="${p.image}" alt="${p.name}" class="product-img" loading="lazy">
           <button class="btn-quick-view" onclick="openProductModal('${p.id}')">
@@ -269,11 +277,15 @@ function renderProducts() {
           </div>
 
           <p class="product-desc">${p.description}</p>
+          ${deliveryNoteDisplay}
 
           <div class="product-footer">
             <div class="product-price-box">
               <span class="product-price-prefix">${pricePrefix}</span>
-              ${priceDisplay}
+              <div class="product-price-row">
+                ${oldPriceDisplay}
+                ${priceDisplay}
+              </div>
             </div>
 
             <div class="product-actions">
@@ -294,10 +306,10 @@ function renderProducts() {
 
 // Arreglos más populares y demandados de la semana (actualización semanal)
 const WEEKLY_POPULAR_IDS = [
+  'ramo-adriana',
+  'ramo-con-cinco-peonias',
   'ramo-buchon-frase',
-  'ramo-gatito',
-  'ramo-amor-verdadero',
-  'ramo-eterno-rapunzel'
+  'ramo-gatito'
 ];
 
 // ==========================================================================
@@ -314,7 +326,7 @@ function renderPopularDates() {
   container.innerHTML = populars.map(p => `
     <div class="popular-alert-card" onclick="openProductModal('${p.id}')">
       <div class="popular-card-badge">
-        <i class="fa-solid fa-fire"></i> ${p.tag || 'Más Pedido'}
+        <i class="fa-solid fa-fire"></i> ${p.tag || 'En Tendencia'}
       </div>
       <div class="popular-card-img-wrap">
         <img src="${p.image}" alt="${p.name}" loading="lazy">
@@ -322,10 +334,14 @@ function renderPopularDates() {
       <div class="popular-card-body">
         <span class="popular-card-tag">${p.categoryLabel}</span>
         <h4 class="popular-card-name">${p.name}</h4>
+        ${p.freeDelivery ? `<span class="popular-card-delivery-hint"><i class="fa-solid fa-truck-fast"></i> Envío gratis (consultar cobertura)</span>` : ''}
         <div class="popular-card-footer">
-          <span class="popular-card-price" style="font-size: 1.05rem; font-weight: 700; color: var(--primary);">
-            ${CONFIG.currencySymbol}${p.price.toFixed(2)}
-          </span>
+          <div class="popular-card-price-group">
+            ${p.originalPrice ? `<span class="popular-card-old-price"><del>${CONFIG.currencySymbol}${p.originalPrice.toFixed(2)}</del></span>` : ''}
+            <span class="popular-card-price" style="font-size: 1.05rem; font-weight: 700; color: var(--primary);">
+              ${CONFIG.currencySymbol}${p.price.toFixed(2)}
+            </span>
+          </div>
           <button type="button" class="btn-popular-action" onclick="event.stopPropagation(); orderDirectWhatsApp('${p.id}')">
             <i class="fa-brands fa-whatsapp"></i>
             <span>Pedir</span>
@@ -722,14 +738,16 @@ Deseo consultar precio, disponibilidad y opciones de entrega del siguiente detal
 
 Agradeceré me brinden la cotización correspondiente y los detalles para realizar el pedido. Muchas gracias.`;
   } else {
+    const formattedPrice = Number.isInteger(product.price) ? product.price.toFixed(2) : product.price.toFixed(2);
+    const oldPriceText = product.originalPrice ? ` (Antes: ${CONFIG.currencySymbol}${product.originalPrice.toFixed(2)})` : '';
     msg = 
 `Estimados Loany Detalles,
 Deseo consultar disponibilidad y confirmar el siguiente arreglo floral:
 
 • Producto: ${product.name}
-• Precio: ${CONFIG.currencySymbol}${product.price}
+• Precio: ${CONFIG.currencySymbol}${formattedPrice}${oldPriceText}
 • Características: ${product.description}
-${product.freeDelivery ? '• Beneficio: Envío incluido en zonas céntricas' : ''}
+${product.freeDelivery ? '• Beneficio: Envío gratis (consultar cobertura de entrega)' : ''}
 
 Agradeceré me brinden los detalles para la entrega y los datos de pago. Muchas gracias.`;
   }
@@ -778,8 +796,23 @@ window.openProductModal = function(productId) {
   if (modalPriceEl) {
     if (isQuote) {
       modalPriceEl.innerHTML = `<span style="font-size: 1.15rem; color: var(--primary); font-weight: 700;"><i class="fa-brands fa-whatsapp"></i> Precio a consultar por WhatsApp</span>`;
+    } else if (product.originalPrice) {
+      modalPriceEl.innerHTML = `
+        <span style="font-size: 1.05rem; color: #94a3b8; text-decoration: line-through; margin-right: 8px;"><del>${CONFIG.currencySymbol}${product.originalPrice.toFixed(2)}</del></span>
+        <span style="font-size: 1.55rem; color: var(--primary); font-weight: 700;">${CONFIG.currencySymbol}${product.price.toFixed(2)}</span>
+      `;
     } else {
-      modalPriceEl.textContent = `${CONFIG.currencySymbol}${product.price}`;
+      modalPriceEl.textContent = `${CONFIG.currencySymbol}${product.price.toFixed(2)}`;
+    }
+  }
+
+  const modalDeliveryEl = document.getElementById('modal-delivery-notice');
+  if (modalDeliveryEl) {
+    if (product.freeDelivery) {
+      modalDeliveryEl.style.display = 'inline-flex';
+      modalDeliveryEl.innerHTML = `<i class="fa-solid fa-truck-fast"></i> <span><strong>Envío Gratis incluido:</strong> Consultar cobertura de entrega</span>`;
+    } else {
+      modalDeliveryEl.style.display = 'none';
     }
   }
 
@@ -934,6 +967,18 @@ function setupEventListeners() {
 // ==========================================================================
 const POPULAR_DEMAND_ITEMS = [
   {
+    id: 'ramo-adriana',
+    title: 'Ramo Adriana en Tendencia',
+    text: 'Tulipanes y peonía de corte exclusivo. Oferta especial de S/. 129.90.',
+    image: 'assets/products/ramo-adriana.jpg'
+  },
+  {
+    id: 'ramo-con-cinco-peonias',
+    title: 'Ramo de Gala 5 Peonías',
+    text: 'Edición exclusiva de 5 peonías importadas. Oferta especial de S/. 349.90.',
+    image: 'assets/products/ramo-con-cinco-peonias.jpg'
+  },
+  {
     id: 'ramo-buchon-frase',
     title: 'Ramo Buchón con Frase Personalizada',
     text: '25 rosas de exportación con mensaje grabado en cinta. Más pedido de la semana.',
@@ -944,18 +989,6 @@ const POPULAR_DEMAND_ITEMS = [
     title: 'Ramo Gatito de Autor',
     text: 'Girasoles frescos y tierno peluche gatito. Tendencia de la semana.',
     image: 'assets/products/ramo-gatito.png'
-  },
-  {
-    id: 'ramo-amor-verdadero',
-    title: 'Ramo Amor Verdadero',
-    text: 'Combinación romántica de rosas rojas y flores selectas con envío incluido.',
-    image: 'assets/products/ramo-amor-verdadero.png'
-  },
-  {
-    id: 'ramo-eterno-rapunzel',
-    title: 'Ramo Eterno Rapunzel',
-    text: 'Arreglo floral permanente tejido a mano en tonos gala lila y dorado.',
-    image: 'assets/products/ramo-eterno-rapunzel.png'
   }
 ];
 
